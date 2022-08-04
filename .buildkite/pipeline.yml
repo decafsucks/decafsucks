@@ -1,0 +1,7 @@
+steps:
+  - label: Test
+    command: bundle exec rake
+    plugins:
+      - docker-compose#v3.10.0:
+          config: .buildkite/docker-compose.yml
+          run: app
