@@ -1,8 +1,8 @@
 steps:
   - label: Prepare database
     commands:
-      - "bin/hanami db create -e test"
-      - "bin/hanami db migrate -e test"
+      - bin/hanami db create -e test
+      - bin/hanami db migrate -e test
     plugins:
       - docker-compose#v3.10.0:
           config: .buildkite/docker-compose.yml
