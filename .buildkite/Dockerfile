@@ -1,3 +1,5 @@
+# Dockerfile based on https://github.com/evilmartians/ruby-on-whales
+
 ARG RUBY_VERSION=3
 ARG DISTRO_NAME=bullseye
 
