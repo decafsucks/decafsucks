@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -euo pipefail
+
+function announce() {
+  printf "===> $1\n"
+}
+
+announce "Creating postgres service"
+docker compose create
+docker compose up --detach --wait
+echo
+
+announce "Preparing development database"
+./bin/hanami db create > /dev/null 2>&1 || true
+./bin/hanami db migrate > /dev/null 2>&1  || true
+echo
+
+announce "Preparing test database"
+./bin/hanami db create -e test > /dev/null 2>&1 || true
+./bin/hanami db migrate -e test > /dev/null 2>&1  || true
+echo
+
+announce "Cleaning up"
+docker compose stop
+echo
+
+announce "Ready to go!"
