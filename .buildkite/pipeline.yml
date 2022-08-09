@@ -1,14 +1,9 @@
 steps:
-  - label: Prepare database
+  - label: Run tests
     commands:
       - bin/hanami db create -e test
       - bin/hanami db migrate -e test
-    plugins:
-      - docker-compose#v3.10.0:
-          config: .buildkite/docker-compose.yml
-          run: app
-  - label: Run tests
-    command: bundle exec rake
+      - bundle exec rake
     plugins:
       - docker-compose#v3.10.0:
           config: .buildkite/docker-compose.yml
