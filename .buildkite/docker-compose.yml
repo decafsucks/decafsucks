@@ -4,7 +4,7 @@ services:
     build:
       context: ../
       dockerfile: .buildkite/Dockerfile
-    environment: &backend_environment
+    environment:
       DATABASE_URL: postgres://postgres:postgres@postgres:5432/decafsucks_test
     depends_on:
       postgres:
