@@ -6,7 +6,7 @@ require "pathname"
 APP_ROOT = Pathname.new(__dir__).join("..").realpath
 
 def setup
-  header "☕️ Welcome to Decaf Sucks!"
+  banner
 
   header "💎 Installing gems"
   system! "gem install bundler --conservative"
@@ -21,6 +21,26 @@ def setup
   header "💖 Everything is fantastic!"
   puts "To see commonly needed commands, run:\n"
   puts "  bin/setup help"
+end
+
+def banner
+  header "☕️ Welcome to Decaf Sucks!"
+  puts "Let’s get brewing...\n\n"
+  puts <<~'COFFEE'
+        /~~~~~~~~~~~~~~~~~~~~~~~/|
+       /              /######/ / |
+      /              /______/ /  |
+     ========================= /||
+     |_______________________|/ ||
+      |  \****/     \__,,__/    ||
+      |===\**/       __,,__     ||
+      |______________\====/%____||
+      |   ___        /~~~~\ %  / |
+     _|  |===|===   /      \%_/  |
+    | |  |###|     |########| | /
+    |____\###/______\######/__|/
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  COFFEE
 end
 
 def help
