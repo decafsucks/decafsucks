@@ -3,40 +3,48 @@
 
 require "pathname"
 
-def setup
-  puts "☕️ Setting up Decaf Sucks"
+APP_ROOT = Pathname.new(__dir__).join("..").realpath
 
-  puts "\n💎 Installing gems"
-  # Only bundle install if the much-faster bundle check indicates we need to
+def setup
+  header "☕️ Welcome to Decaf Sucks!"
+
+  header "💎 Installing gems"
   system! "gem install bundler --conservative"
   system! "bundle check || bundle install"
 
-  puts "\n💾 Preparing databases"
+  header "💾 Preparing databases"
   system! "bin/hanami db create > /dev/null 2>&1 || true"
   system! "bin/hanami db migrate > /dev/null 2>&1 || true"
   system! "HANAMI_ENV=test bin/hanami db create > /dev/null 2>&1 || true"
   system! "HANAMI_ENV=test bin/hanami db migrate > /dev/null 2>&1 || true"
 
-  puts "\n🎉 You’re all set up!"
-  puts
-  puts "To see commonly needed commands, run:"
-  puts
+  header "💖 Everything is fantastic!"
+  puts "To see commonly needed commands, run:\n"
   puts "  bin/setup help"
-  puts
 end
 
 def help
-  puts "Useful commands:"
-  puts
-  puts "  bin/hanami server"
-  puts "     # run app locally"
-  puts
-  puts "  bundle exec rspec"
-  puts "     # run tests"
-  puts
-  puts "  bin/setup help"
-  puts "     # Show this help"
-  puts
+  puts <<~TEXT
+    Useful commands:
+
+      bin/setup
+          # set up the app
+
+      bin/hanami server
+          # run app locally
+
+      bundle exec rspec
+          # run tests
+
+      bin/setup help
+          # show this help
+  TEXT
+end
+
+$header_used = false
+def header(message)
+  puts "#{"\n" if $header_used}\e[1m#{message}\e[0m\n\n"
+  $header_used = true
 end
 
 # We don't want the setup method to have to do all this error checking, and we also want to
@@ -50,20 +58,6 @@ def system!(*args)
     abort
   end
 end
-
-# FileUtils.chdir APP_ROOT do
-#   puts "== Installing dependencies =="
-#   system! "gem install bundler --conservative"
-#   system("bundle check") || system!("bundle install")
-
-#   puts "\n== Preparing database =="
-#   system "bin/hanami db create > /dev/null 2>&1 || true"
-#   system "bin/hanami db migrate > /dev/null 2>&1 || true"
-#   system "HANAMI_ENV=test bin/hanami db create > /dev/null 2>&1 || true"
-#   system "HANAMI_ENV=test bin/hanami db migrate > /dev/null 2>&1 || true"
-# end
-
-# puts "\n== Ready to go! =="
 
 if %w[help --help -h].include?(ARGV[0])
   help
