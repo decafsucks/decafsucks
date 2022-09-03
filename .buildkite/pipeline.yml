@@ -1,8 +1,8 @@
 steps:
   - label: Run tests
     commands:
-      - bin/hanami db create -e test
-      - bin/hanami db migrate -e test
+      - HANAMI_ENV=test bin/hanami db create
+      - HANAMI_ENV=test bin/hanami db migrate
       - bundle exec rake
     plugins:
       - docker-compose#v3.10.0:
