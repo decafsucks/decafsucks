@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # App framework
-gem "hanami", "~> 2.0.0.beta"
+gem "hanami", github: "hanami/hanami", branch: "main"
 gem "hanami-router", "~> 2.0.0.beta"
 gem "hanami-controller", "~> 2.0.0.beta"
 gem "hanami-cli", github: "hanami/cli", branch: "use-database_url-from-env"
