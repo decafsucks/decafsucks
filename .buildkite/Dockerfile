@@ -11,6 +11,7 @@ RUN apt-get update -qq \
   && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     build-essential \
     curl \
+    git \
     gpg \
   && apt-get clean \
   && rm -rf /var/cache/apt/archives/* \
