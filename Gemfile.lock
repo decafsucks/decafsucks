@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/hanami/cli.git
+  revision: d8e3bc60057a2ff14320eb0c95346b0edb85d776
+  branch: use-database_url-from-env
+  specs:
+    hanami-cli (2.0.0.beta2)
+      bundler (~> 2.1)
+      dry-cli (~> 0.7)
+      dry-files (~> 0.2, >= 0.2.0)
+      dry-inflector (~> 0.2)
+      rake (~> 13.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,12 +76,6 @@ GEM
       hanami-cli (~> 2.0.beta)
       hanami-utils (~> 2.0.beta)
       zeitwerk (~> 2.4)
-    hanami-cli (2.0.0.beta1)
-      bundler (~> 2.1)
-      dry-cli (~> 0.7)
-      dry-files (~> 0.2, >= 0.2.0)
-      dry-inflector (~> 0.2)
-      rake (~> 13.0)
     hanami-controller (2.0.0.beta1)
       dry-configurable (~> 0.13, >= 0.13.0)
       hanami-utils (~> 2.0.beta)
@@ -160,6 +166,7 @@ DEPENDENCIES
   dotenv
   dry-types
   hanami (~> 2.0.0.beta)
+  hanami-cli!
   hanami-controller (~> 2.0.0.beta)
   hanami-router (~> 2.0.0.beta)
   hanami-rspec

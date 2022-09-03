@@ -6,6 +6,7 @@ source "https://rubygems.org"
 gem "hanami", "~> 2.0.0.beta"
 gem "hanami-router", "~> 2.0.0.beta"
 gem "hanami-controller", "~> 2.0.0.beta"
+gem "hanami-cli", github: "hanami/cli", branch: "use-database_url-from-env"
 
 # Framework support
 gem "dry-types"

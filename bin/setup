@@ -1,0 +1,72 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "pathname"
+
+def setup
+  puts "☕️ Setting up Decaf Sucks"
+
+  puts "\n💎 Installing gems"
+  # Only bundle install if the much-faster bundle check indicates we need to
+  system! "gem install bundler --conservative"
+  system! "bundle check || bundle install"
+
+  puts "\n💾 Preparing databases"
+  system! "bin/hanami db create > /dev/null 2>&1 || true"
+  system! "bin/hanami db migrate > /dev/null 2>&1 || true"
+  system! "HANAMI_ENV=test bin/hanami db create > /dev/null 2>&1 || true"
+  system! "HANAMI_ENV=test bin/hanami db migrate > /dev/null 2>&1 || true"
+
+  puts "\n🎉 You’re all set up!"
+  puts
+  puts "To see commonly needed commands, run:"
+  puts
+  puts "  bin/setup help"
+  puts
+end
+
+def help
+  puts "Useful commands:"
+  puts
+  puts "  bin/hanami server"
+  puts "     # run app locally"
+  puts
+  puts "  bundle exec rspec"
+  puts "     # run tests"
+  puts
+  puts "  bin/setup help"
+  puts "     # Show this help"
+  puts
+end
+
+# We don't want the setup method to have to do all this error checking, and we also want to
+# explicitly puts what we are executing, so we use this method instead of Kernel#system and friends
+def system!(*args)
+  # puts "Executing #{args}"
+  if system(*args)
+    # puts "#{args} succeeded"
+  else
+    puts "#{args} failed"
+    abort
+  end
+end
+
+# FileUtils.chdir APP_ROOT do
+#   puts "== Installing dependencies =="
+#   system! "gem install bundler --conservative"
+#   system("bundle check") || system!("bundle install")
+
+#   puts "\n== Preparing database =="
+#   system "bin/hanami db create > /dev/null 2>&1 || true"
+#   system "bin/hanami db migrate > /dev/null 2>&1 || true"
+#   system "HANAMI_ENV=test bin/hanami db create > /dev/null 2>&1 || true"
+#   system "HANAMI_ENV=test bin/hanami db migrate > /dev/null 2>&1 || true"
+# end
+
+# puts "\n== Ready to go! =="
+
+if %w[help --help -h].include?(ARGV[0])
+  help
+else
+  setup
+end
