@@ -1,2 +1,8 @@
+# Bundler config
 /.bundle
+
+# Data for docker-run services
+/data
+
+# Logs
 /log

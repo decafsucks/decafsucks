@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "pathname"
+
+APP_ROOT = Pathname.new(__dir__).join("..").realpath
+
+def setup
+  banner
+
+  header "💎 Installing gems"
+  system! "gem install bundler --conservative"
+  system! "bundle check || bundle install"
+
+  header "💾 Preparing databases"
+  system! "bin/hanami db create"
+  system! "bin/hanami db migrate"
+  system! "HANAMI_ENV=test bin/hanami db create"
+  system! "HANAMI_ENV=test bin/hanami db migrate"
+
+  header "⭐️ Five stars, everything is fantastic!"
+  puts "For commonly needed commands, run:\n"
+  puts "  bin/setup help"
+end
+
+def banner
+  puts <<~COFFEE
+
+          )  (
+         (   ) )
+          ) ( (
+        _______)_
+     .-'---------|  \e[1mWelcome to Decaf Sucks!\e[0m
+    ( C|/\\/\\/\\/\\/|
+     '-./\\/\\/\\/\\/|  Let’s get brewing…
+       '_________'
+        '-------'
+
+  COFFEE
+end
+
+def help
+  puts <<~TEXT
+    Useful commands:
+
+      bin/setup
+          # set up the app
+
+      bin/hanami server
+          # run app locally
+
+      bundle exec rspec
+          # run tests
+
+      bin/setup help
+          # show this help
+  TEXT
+end
+
+$header_used = false
+def header(message)
+  puts "#{"\n" if $header_used}\e[1m#{message}\e[0m\n\n"
+  $header_used = true
+end
+
+# We don't want the setup method to have to do all this error checking, and we also want to
+# explicitly puts what we are executing, so we use this method instead of Kernel#system and friends
+def system!(*args)
+  unless system(*args)
+    msg = args.length == 1 ? args.first.inspect : args.inspect
+    puts "\nCommand failed: #{msg}"
+
+    exit $?.exitstatus
+  end
+end
+
+if %w[help --help -h].include?(ARGV[0])
+  help
+else
+  setup
+end

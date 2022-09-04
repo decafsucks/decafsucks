@@ -1,6 +1,9 @@
 steps:
-  - label: Test
-    command: bundle exec rake
+  - label: Run tests
+    commands:
+      - HANAMI_ENV=test bin/hanami db create
+      - HANAMI_ENV=test bin/hanami db migrate
+      - bundle exec rake
     plugins:
       - docker-compose#v3.10.0:
           config: .buildkite/docker-compose.yml

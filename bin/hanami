@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "hanami/cli"
+
+module DBCLI
+  require "hanami/cli/commands/app/db/create"
+  require "hanami/cli/commands/app/db/create_migration"
+  require "hanami/cli/commands/app/db/drop"
+  require "hanami/cli/commands/app/db/migrate"
+  require "hanami/cli/commands/app/db/setup"
+  require "hanami/cli/commands/app/db/reset"
+  require "hanami/cli/commands/app/db/rollback"
+  require "hanami/cli/commands/app/db/sample_data"
+  require "hanami/cli/commands/app/db/seed"
+  require "hanami/cli/commands/app/db/structure/dump"
+  require "hanami/cli/commands/app/db/version"
+
+  def self.extended(base)
+    base.module_eval do
+      register "db create", Hanami::CLI::Commands::App::DB::Create
+      register "db create_migration", Hanami::CLI::Commands::App::DB::CreateMigration
+      register "db drop", Hanami::CLI::Commands::App::DB::Drop
+      register "db migrate", Hanami::CLI::Commands::App::DB::Migrate
+      register "db setup", Hanami::CLI::Commands::App::DB::Setup
+      register "db reset", Hanami::CLI::Commands::App::DB::Reset
+      register "db rollback", Hanami::CLI::Commands::App::DB::Rollback
+      register "db sample_data", Hanami::CLI::Commands::App::DB::SampleData
+      register "db seed", Hanami::CLI::Commands::App::DB::Seed
+      register "db structure dump", Hanami::CLI::Commands::App::DB::Structure::Dump
+      register "db version", Hanami::CLI::Commands::App::DB::Version
+    end
+  end
+end
+
+Hanami::CLI.extend(DBCLI)
+
+cli = Dry::CLI.new(Hanami::CLI)
+Hanami::CLI::Bundler.require(:cli)
+
+cli.call
