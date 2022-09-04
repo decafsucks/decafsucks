@@ -19,7 +19,7 @@ def setup
   system! "HANAMI_ENV=test bin/hanami db migrate > /dev/null 2>&1 || true"
 
   header "💖 Everything is fantastic!"
-  puts "To see commonly needed commands, run:\n"
+  puts "For commonly needed commands, run:\n"
   puts "  bin/setup help"
 end
 
