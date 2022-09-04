@@ -68,7 +68,7 @@ end
 def system!(*args)
   unless system(*args)
     msg = args.length == 1 ? args.first.inspect : args.inspect
-    puts "\nCommand failed: #{msg}"
+    puts "\n\e[1mCommand failed:\e[0m #{msg}"
 
     exit $?.exitstatus
   end
