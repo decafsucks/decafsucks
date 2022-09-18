@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/cli.git
-  revision: cf61303bd089ab044c9ef16b210b68c8987e15e7
+  revision: edc50b6c8cedabce71636f141a8de713c4f68c6f
   branch: use-database_url-from-env
   specs:
     hanami-cli (2.0.0.beta2)
