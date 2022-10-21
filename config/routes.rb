@@ -2,8 +2,6 @@
 
 module Decafsucks
   class Routes < Hanami::Routes
-    define do
-      root { "Hello from Hanami" }
-    end
+    root { "Hello from Hanami" }
   end
 end
