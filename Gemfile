@@ -3,9 +3,9 @@
 source "https://rubygems.org"
 
 # App framework
-gem "hanami", github: "hanami/hanami", branch: "main"
-gem "hanami-router", "~> 2.0.0.beta"
-gem "hanami-controller", "~> 2.0.0.beta"
+gem "hanami", github: "hanami/hanami"
+gem "hanami-router", github: "hanami/router"
+gem "hanami-controller", github: "hanami/controller"
 gem "hanami-cli", github: "hanami/cli"
 
 # Framework support
