@@ -35,7 +35,7 @@ end
 group :test do
   # Database
   gem "database_cleaner-sequel"
-  # gem "rom-factory", github: "rom-rb/rom-factory"
+  gem "rom-factory", github: "rom-rb/rom-factory", branch: "upgrade-to-rom6"
 
   # Web integration testing
   gem "rack-test"
