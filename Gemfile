@@ -15,9 +15,12 @@ gem "rake"
 
 # Database
 gem "pg"
-gem "rom"
-gem "rom-sql"
+gem "rom", github: "rom-rb/rom"
+# gem "rom-sql", github: "rom-rb/rom-sql"
 gem "sequel"
+
+# Temporary edge gems
+gem "dry-transformer", github: "dry-rb/dry-transformer"
 
 group :cli, :development, :test do
   # Hanami testing helpers
@@ -32,7 +35,7 @@ end
 group :test do
   # Database
   gem "database_cleaner-sequel"
-  gem "rom-factory"
+  # gem "rom-factory", github: "rom-rb/rom-factory"
 
   # Web integration testing
   gem "rack-test"
