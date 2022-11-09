@@ -50,6 +50,16 @@ GIT
       rack (~> 2.0)
 
 GIT
+  remote: https://github.com/rom-rb/rom-sql.git
+  revision: 8fd3b3f3f05215e6eabc9ea23fa514b61a897b3b
+  specs:
+    rom-sql (4.0.0.alpha1)
+      dry-core (~> 1.0)
+      dry-types (~> 1.7)
+      rom (~> 6.0.0.alpha)
+      sequel (>= 5)
+
+GIT
   remote: https://github.com/rom-rb/rom.git
   revision: c433f03873fad3c0bae9b625a71a92617c24149e
   specs:
@@ -178,6 +188,7 @@ DEPENDENCIES
   rack-test
   rake
   rom!
+  rom-sql!
   sequel
 
 BUNDLED WITH

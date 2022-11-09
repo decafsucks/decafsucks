@@ -16,7 +16,7 @@ gem "rake"
 # Database
 gem "pg"
 gem "rom", github: "rom-rb/rom"
-# gem "rom-sql", github: "rom-rb/rom-sql"
+gem "rom-sql", github: "rom-rb/rom-sql"
 gem "sequel"
 
 # Temporary edge gems
