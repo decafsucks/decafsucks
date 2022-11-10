@@ -15,8 +15,8 @@ gem "rake"
 
 # Database
 gem "pg"
-gem "rom", github: "rom-rb/rom"
-gem "rom-sql", github: "rom-rb/rom-sql"
+gem "rom", github: "rom-rb/rom", branch: "release-5.3"
+gem "rom-sql", github: "rom-rb/rom-sql", branch: "release-3.6"
 gem "sequel"
 
 # Temporary edge gems
@@ -35,7 +35,7 @@ end
 group :test do
   # Database
   gem "database_cleaner-sequel"
-  gem "rom-factory", github: "rom-rb/rom-factory", branch: "upgrade-to-rom6"
+  gem "rom-factory", github: "rom-rb/rom-factory", branch: "main"
 
   # Web integration testing
   gem "rack-test"

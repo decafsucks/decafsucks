@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 0d1bc5f9b256fdb61d9e89f7a99ebe447443d9e8
+  revision: c963882a3cb0ed10bf96590f87c901893034b962
   specs:
     hanami (2.0.0.rc1)
       bundler (>= 1.16, < 3)
@@ -51,39 +51,53 @@ GIT
 
 GIT
   remote: https://github.com/rom-rb/rom-factory.git
-  revision: 0a52cd704cee6d6d320a90884de1ec66bfc19c6e
-  branch: upgrade-to-rom6
+  revision: 0aa80e6a9227bc2b9abd8d30695c70e9d3ac08f1
+  branch: main
   specs:
-    rom-factory (1.0.0.alpha1)
+    rom-factory (0.11.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
-      faker (>= 1.7, < 3.0)
-      rom (~> 6.0.0.alpha1)
+      dry-struct (~> 1.6)
+      faker (>= 2.0, < 3.0)
+      rom-core (~> 5.3)
 
 GIT
   remote: https://github.com/rom-rb/rom-sql.git
-  revision: 8fd3b3f3f05215e6eabc9ea23fa514b61a897b3b
+  revision: 1b39a5fc58b6d2da14a962b0b5c3f27f9d8e5ed7
+  branch: release-3.6
   specs:
-    rom-sql (4.0.0.alpha1)
+    rom-sql (3.6.0)
       dry-core (~> 1.0)
-      dry-types (~> 1.7)
-      rom (~> 6.0.0.alpha)
-      sequel (>= 5)
+      dry-types (~> 1.0)
+      rom (~> 5.2, >= 5.2.1)
+      sequel (>= 4.49)
 
 GIT
   remote: https://github.com/rom-rb/rom.git
-  revision: c433f03873fad3c0bae9b625a71a92617c24149e
+  revision: e230c12283b6f3701827aaea64da951713113701
+  branch: release-5.3
   specs:
-    rom (6.0.0.alpha1)
+    rom (5.3.0)
+      rom-changeset (~> 5.3, >= 5.3.0)
+      rom-core (~> 5.3, >= 5.3.0)
+      rom-repository (~> 5.3, >= 5.3.0)
+    rom-changeset (5.3.0)
+      dry-core (~> 1.0)
+      rom-core (~> 5.3)
+      transproc (~> 1.0, >= 1.1.0)
+    rom-core (5.3.0)
       concurrent-ruby (~> 1.1)
-      dry-core (>= 1.0.0.rc1, < 2)
-      dry-effects (~> 0.4)
-      dry-inflector (>= 1.0.0.rc1, < 2)
-      dry-initializer (~> 3.1)
-      dry-struct (~> 1.4)
-      dry-transformer (~> 0.1, >= 0.1.2)
-      dry-types (~> 1.5)
-      zeitwerk (~> 2.6)
+      dry-configurable (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-initializer (~> 3.0, >= 3.0.1)
+      dry-struct (~> 1.0)
+      dry-types (~> 1.6)
+      transproc (~> 1.0, >= 1.1.0)
+    rom-repository (5.3.0)
+      dry-core (~> 1.0)
+      dry-initializer (~> 3.0, >= 3.0.1)
+      rom-core (~> 5.3, >= 5.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -104,12 +118,6 @@ GEM
       zeitwerk (~> 2.6)
     dry-core (1.0.0)
       concurrent-ruby (~> 1.0)
-      zeitwerk (~> 2.6)
-    dry-effects (0.4.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0)
-      dry-inflector (~> 1.0)
-      dry-initializer (~> 3.0)
       zeitwerk (~> 2.6)
     dry-events (1.0.0)
       concurrent-ruby (~> 1.0)
@@ -183,6 +191,7 @@ GEM
     rspec-support (3.12.0)
     ruby2_keywords (0.0.5)
     sequel (5.62.0)
+    transproc (1.1.1)
     zeitwerk (2.6.6)
 
 PLATFORMS
