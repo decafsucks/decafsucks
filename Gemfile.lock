@@ -1,46 +1,103 @@
 GIT
-  remote: https://github.com/hanami/cli.git
-  revision: f26ba66e70ec005dd1856c89a27018d4f022ab8f
+  remote: https://github.com/dry-rb/dry-transformer.git
+  revision: caf213b263642c624ff95c2854a8bfa37c69e949
   specs:
-    hanami-cli (2.0.0.beta3)
+    dry-transformer (0.1.2)
+
+GIT
+  remote: https://github.com/hanami/cli.git
+  revision: 639393a4670e6b50acf7167d3232a09cc2422c9d
+  specs:
+    hanami-cli (2.0.0.rc1)
       bundler (~> 2.1)
-      dry-cli (~> 0.7)
-      dry-files (~> 0.3, >= 0.3.0)
-      dry-inflector (~> 0.2)
+      dry-cli (~> 1.0, < 2)
+      dry-files (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
       rake (~> 13.0)
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: 1bda016aa9d07f6537d175b94101812e94df8c09
+  revision: f66d91beef8023a1dd2d41c51aa3168f2060d2a4
   specs:
-    hanami-controller (2.0.0.beta1)
-      dry-configurable (~> 0.13, >= 0.13.0)
-      hanami-utils (~> 2.0.beta)
+    hanami-controller (2.0.0.rc1)
+      dry-configurable (~> 1.0, < 2)
+      hanami-utils (~> 2.0.0.rc1)
       rack (~> 2.0)
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: b91dff59a03f9ee16c129b3272cd91615eb13b69
+  revision: c963882a3cb0ed10bf96590f87c901893034b962
   specs:
-    hanami (2.0.0.beta3)
+    hanami (2.0.0.rc1)
       bundler (>= 1.16, < 3)
-      dry-configurable (~> 0.16, >= 0.16.0)
-      dry-core (~> 0.9, >= 0.9)
-      dry-inflector (~> 0.2, >= 0.2.1)
-      dry-monitor (~> 0.7, >= 0.7)
-      dry-system (~> 0.27, >= 0.27.1)
-      hanami-cli (~> 2.0.beta)
-      hanami-utils (~> 2.0.beta)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+      dry-logger (~> 1.0.rc)
+      dry-monitor (~> 1.0, < 2)
+      dry-system (~> 1.0.rc)
+      hanami-cli (~> 2.0.rc)
+      hanami-utils (~> 2.0.rc)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/router.git
-  revision: a58f935a0d64b5cda1a5ba7179a453b5dc1d00d8
+  revision: d4f7a677a34978f24c153b9c96b90a03dd3e3a9b
   specs:
-    hanami-router (2.0.0.beta2)
+    hanami-router (2.0.0.rc1)
       mustermann (~> 1.0)
       mustermann-contrib (~> 1.0)
       rack (~> 2.0)
+
+GIT
+  remote: https://github.com/rom-rb/rom-factory.git
+  revision: 0aa80e6a9227bc2b9abd8d30695c70e9d3ac08f1
+  branch: main
+  specs:
+    rom-factory (0.11.0)
+      dry-configurable (~> 1.0)
+      dry-core (~> 1.0)
+      dry-struct (~> 1.6)
+      faker (>= 2.0, < 3.0)
+      rom-core (~> 5.3)
+
+GIT
+  remote: https://github.com/rom-rb/rom-sql.git
+  revision: 1b39a5fc58b6d2da14a962b0b5c3f27f9d8e5ed7
+  branch: release-3.6
+  specs:
+    rom-sql (3.6.0)
+      dry-core (~> 1.0)
+      dry-types (~> 1.0)
+      rom (~> 5.2, >= 5.2.1)
+      sequel (>= 4.49)
+
+GIT
+  remote: https://github.com/rom-rb/rom.git
+  revision: e230c12283b6f3701827aaea64da951713113701
+  branch: release-5.3
+  specs:
+    rom (5.3.0)
+      rom-changeset (~> 5.3, >= 5.3.0)
+      rom-core (~> 5.3, >= 5.3.0)
+      rom-repository (~> 5.3, >= 5.3.0)
+    rom-changeset (5.3.0)
+      dry-core (~> 1.0)
+      rom-core (~> 5.3)
+      transproc (~> 1.0, >= 1.1.0)
+    rom-core (5.3.0)
+      concurrent-ruby (~> 1.1)
+      dry-configurable (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-initializer (~> 3.0, >= 3.0.1)
+      dry-struct (~> 1.0)
+      dry-types (~> 1.6)
+      transproc (~> 1.0, >= 1.1.0)
+    rom-repository (5.3.0)
+      dry-core (~> 1.0)
+      dry-initializer (~> 3.0, >= 3.0.1)
+      rom-core (~> 5.3, >= 5.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -52,59 +109,54 @@ GEM
       sequel
     diff-lcs (1.5.0)
     dotenv (2.8.1)
-    dry-auto_inject (0.9.0)
-      dry-container (>= 0.3.4)
-    dry-cli (0.7.0)
-    dry-configurable (0.16.1)
-      dry-core (~> 0.6)
+    dry-auto_inject (1.0.0.rc1)
+      dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-container (0.11.0)
-      concurrent-ruby (~> 1.0)
-    dry-core (0.9.1)
+    dry-cli (1.0.0)
+    dry-configurable (1.0.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.0)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-equalizer (0.3.0)
-    dry-events (0.4.0)
+    dry-events (1.0.0)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 0.9, >= 0.9)
-    dry-files (0.3.0)
-    dry-inflector (0.3.0)
+      dry-core (~> 1.0, < 2)
+    dry-files (1.0.0)
+    dry-inflector (1.0.0)
     dry-initializer (3.1.1)
-    dry-logic (1.3.0)
+    dry-logger (1.0.0.rc2)
+    dry-logic (1.4.0)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 0.9, >= 0.9)
+      dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
-    dry-monitor (0.7.0)
-      dry-configurable (~> 0.16, >= 0.16.0)
-      dry-core (~> 0.9, >= 0.9)
-      dry-events (~> 0.4, >= 0.4.0)
-    dry-struct (1.5.2)
-      dry-core (~> 0.9, >= 0.9)
-      dry-types (~> 1.6)
+    dry-monitor (1.0.0)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0, < 2)
+      dry-events (~> 1.0, < 2)
+    dry-struct (1.6.0)
+      dry-core (~> 1.0, < 2)
+      dry-types (>= 1.7, < 2)
       ice_nine (~> 0.11)
       zeitwerk (~> 2.6)
-    dry-system (0.27.2)
-      dry-auto_inject (>= 0.4.0)
-      dry-configurable (~> 0.16, >= 0.16.0)
-      dry-container (~> 0.10, >= 0.10.0)
-      dry-core (~> 0.9, >= 0.9.0)
-      dry-inflector (~> 0.1, >= 0.1.2)
-      zeitwerk (~> 2.6)
-    dry-transformer (0.1.1)
-    dry-types (1.6.1)
+    dry-system (1.0.0.rc1)
+      dry-auto_inject (~> 1.0.0.rc1, < 2)
+      dry-configurable (~> 1.0, < 2)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+    dry-types (1.7.0)
       concurrent-ruby (~> 1.0)
-      dry-container (~> 0.3)
-      dry-core (~> 0.9, >= 0.9)
-      dry-inflector (~> 0.1, >= 0.1.2)
-      dry-logic (~> 1.3, >= 1.3)
+      dry-core (~> 1.0, < 2)
+      dry-inflector (~> 1.0, < 2)
+      dry-logic (>= 1.4, < 2)
       zeitwerk (~> 2.6)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    hanami-rspec (3.11.0.beta3)
+    hanami-rspec (3.11.0.beta4)
       hanami-cli (~> 2.0.0.beta)
       rake (~> 13.0)
       rspec (~> 3.11)
-    hanami-utils (2.0.0.beta1)
+    hanami-utils (2.0.0.rc1)
       concurrent-ruby (~> 1.0)
       dry-transformer (~> 0.1)
     hansi (0.2.1)
@@ -124,55 +176,23 @@ GEM
     rack-test (2.0.2)
       rack (>= 1.3)
     rake (13.0.6)
-    rom (5.2.6)
-      rom-changeset (~> 5.2, >= 5.2.3)
-      rom-core (~> 5.2, >= 5.2.5)
-      rom-repository (~> 5.2, >= 5.2.2)
-    rom-changeset (5.2.3)
-      dry-core (~> 0.4)
-      rom-core (~> 5.2)
-      transproc (~> 1.0, >= 1.1.0)
-    rom-core (5.2.6)
-      concurrent-ruby (~> 1.1)
-      dry-container (~> 0.7)
-      dry-core (~> 0.4)
-      dry-equalizer (~> 0.2)
-      dry-inflector (~> 0.1)
-      dry-initializer (~> 3.0, >= 3.0.1)
-      dry-struct (~> 1.0)
-      dry-types (~> 1.0)
-      transproc (~> 1.0, >= 1.1.0)
-    rom-factory (0.10.2)
-      dry-configurable (~> 0.7)
-      dry-core (~> 0.4)
-      faker (>= 1.7, < 3.0)
-      rom-core (~> 5.0)
-    rom-repository (5.2.2)
-      dry-core (~> 0.4)
-      dry-initializer (~> 3.0, >= 3.0.1)
-      rom-core (~> 5.2, >= 5.2.2)
-    rom-sql (3.5.0)
-      dry-core (~> 0.5, >= 0.5)
-      dry-types (~> 1.0)
-      rom (~> 5.2, >= 5.2.1)
-      sequel (>= 4.49)
-    rspec (3.11.0)
-      rspec-core (~> 3.11.0)
-      rspec-expectations (~> 3.11.0)
-      rspec-mocks (~> 3.11.0)
-    rspec-core (3.11.0)
-      rspec-support (~> 3.11.0)
-    rspec-expectations (3.11.1)
+    rspec (3.12.0)
+      rspec-core (~> 3.12.0)
+      rspec-expectations (~> 3.12.0)
+      rspec-mocks (~> 3.12.0)
+    rspec-core (3.12.0)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.11.0)
-    rspec-mocks (3.11.1)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.11.0)
-    rspec-support (3.11.1)
+      rspec-support (~> 3.12.0)
+    rspec-support (3.12.0)
     ruby2_keywords (0.0.5)
-    sequel (5.61.0)
+    sequel (5.62.0)
     transproc (1.1.1)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   arm64-darwin-21
@@ -180,6 +200,7 @@ PLATFORMS
 DEPENDENCIES
   database_cleaner-sequel
   dotenv
+  dry-transformer!
   dry-types
   hanami!
   hanami-cli!
@@ -190,10 +211,10 @@ DEPENDENCIES
   puma
   rack-test
   rake
-  rom
-  rom-factory
-  rom-sql
+  rom!
+  rom-factory!
+  rom-sql!
   sequel
 
 BUNDLED WITH
-   2.3.20
+   2.3.25
