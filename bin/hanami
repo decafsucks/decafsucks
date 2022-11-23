@@ -4,22 +4,10 @@
 require "bundler/setup"
 require "hanami/cli"
 
-# The initial Hanami 2.0.0 release will not officially include database integration. However, much
-# of the required work is already done and included in the gem.
+# Hanami 2.0 does does not officially include database integration. However, much of the required
+# work is already done and included in the gem.
 #
 # This CLI shim activates the database commands so we can manage our app database.
-
-require "hanami/cli/commands/app/db/create"
-require "hanami/cli/commands/app/db/create_migration"
-require "hanami/cli/commands/app/db/drop"
-require "hanami/cli/commands/app/db/migrate"
-require "hanami/cli/commands/app/db/setup"
-require "hanami/cli/commands/app/db/reset"
-require "hanami/cli/commands/app/db/rollback"
-require "hanami/cli/commands/app/db/sample_data"
-require "hanami/cli/commands/app/db/seed"
-require "hanami/cli/commands/app/db/structure/dump"
-require "hanami/cli/commands/app/db/version"
 
 Hanami::CLI.tap do |cli|
   cli.register "db create", Hanami::CLI::Commands::App::DB::Create

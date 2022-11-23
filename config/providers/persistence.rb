@@ -20,7 +20,10 @@ Hanami.app.register_provider :persistence, namespace: true do
 
   start do
     rom_config = target["persistence.config"]
-    rom_config.auto_registration target.root.join("lib/decafsucks/persistence")
+    rom_config.auto_registration(
+      target.root.join("lib/decafsucks/persistence"),
+      namespace: "Decafsucks::Persistence"
+    )
 
     register "rom", ROM.container(rom_config)
   end
