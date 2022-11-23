@@ -3,10 +3,10 @@
 source "https://rubygems.org"
 
 # App framework
-gem "hanami", github: "hanami/hanami"
-gem "hanami-router", github: "hanami/router"
-gem "hanami-controller", github: "hanami/controller"
-gem "hanami-cli", github: "hanami/cli"
+gem "hanami", "~> 2.0"
+gem "hanami-router", "~> 2.0"
+gem "hanami-controller", "~> 2.0"
+gem "hanami-cli", github: "hanami/cli", branch: "update-db-classes"
 
 # Framework support
 gem "dry-types"
@@ -15,12 +15,9 @@ gem "rake"
 
 # Database
 gem "pg"
-gem "rom", github: "rom-rb/rom", branch: "release-5.3"
-gem "rom-sql", github: "rom-rb/rom-sql", branch: "release-3.6"
+gem "rom"
+gem "rom-sql"
 gem "sequel"
-
-# Temporary edge gems
-gem "dry-transformer", github: "dry-rb/dry-transformer"
 
 group :cli, :development, :test do
   # Hanami testing helpers
@@ -35,7 +32,7 @@ end
 group :test do
   # Database
   gem "database_cleaner-sequel"
-  gem "rom-factory", github: "rom-rb/rom-factory", branch: "main"
+  gem "rom-factory"
 
   # Web integration testing
   gem "rack-test"
