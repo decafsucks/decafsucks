@@ -1,6 +1,7 @@
 require "dry/system"
 require "hanami/providers/rack"
 
+# FIXME(Hanami): this needs to be upstreamed
 module Hanami
   module Providers
     class Rack < Dry::System::Provider::Source

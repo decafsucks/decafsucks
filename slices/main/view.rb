@@ -3,7 +3,7 @@
 
 module Main
   class View < Decafsucks::View
-    # TODO: fix this upstream
+    # FIXME(Hanami): base slice views should override paths from the base app view
     config.paths = [File.join(File.expand_path(__dir__), "templates")]
   end
 end
