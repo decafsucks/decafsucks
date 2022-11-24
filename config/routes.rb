@@ -2,6 +2,8 @@
 
 module Decafsucks
   class Routes < Hanami::Routes
-    root { "Hello from Hanami" }
+    slice :main, at: "/" do
+      root to: "home.show"
+    end
   end
 end

@@ -7,11 +7,13 @@ gem "hanami", "~> 2.0"
 gem "hanami-router", "~> 2.0"
 gem "hanami-controller", "~> 2.0"
 gem "hanami-cli", github: "hanami/cli", branch: "update-db-classes"
+gem "hanami-view", github: "hanami/view", branch: "main"
 
 # Framework support
 gem "dry-types"
 gem "puma"
 gem "rake"
+gem "slim"
 
 # Database
 gem "pg"
@@ -35,5 +37,6 @@ group :test do
   gem "rom-factory"
 
   # Web integration testing
+  gem "capybara"
   gem "rack-test"
 end
