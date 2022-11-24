@@ -2,8 +2,8 @@
 
 module Main
   module Views
-    module Cafes
-      class Index < Main::View
+    module Home
+      class Show < Main::View
       end
     end
   end
