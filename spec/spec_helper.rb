@@ -7,4 +7,7 @@ ENV["HANAMI_ENV"] ||= "test"
 require "hanami/prepare"
 
 require_relative "support/rspec"
+
+require_relative "support/db"
 require_relative "support/requests"
+require_relative "support/web"

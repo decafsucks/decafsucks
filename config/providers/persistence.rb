@@ -6,6 +6,8 @@ Hanami.app.register_provider :persistence, namespace: true do
     require "rom/core"
     require "rom/sql"
 
+    ROM::Inflector = Hanami.app["inflector"] # TODO: silence warning
+
     rom_config = ROM::Configuration.new(:sql, target["settings"].database_url)
 
     rom_config.plugin(:sql, relations: :instrumentation) do |plugin_config|
