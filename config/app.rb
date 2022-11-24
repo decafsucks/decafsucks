@@ -5,5 +5,8 @@ require "ext/hanami/providers/rack"
 
 module Decafsucks
   class App < Hanami::App
+    config.inflections do |i|
+      i.plural "cafe", "cafes"
+    end
   end
 end

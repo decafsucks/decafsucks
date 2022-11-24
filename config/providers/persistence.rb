@@ -6,6 +6,9 @@ Hanami.app.register_provider :persistence, namespace: true do
     require "rom/core"
     require "rom/sql"
 
+    # TODO(Hanami): As part of built-in rom setup, configure ROM with app inflector
+    silence_warnings { ROM::Inflector = Hanami.app["inflector"] }
+
     rom_config = ROM::Configuration.new(:sql, target["settings"].database_url)
 
     rom_config.plugin(:sql, relations: :instrumentation) do |plugin_config|
@@ -26,5 +29,13 @@ Hanami.app.register_provider :persistence, namespace: true do
     )
 
     register "rom", ROM.container(rom_config)
+  end
+
+  define_method(:silence_warnings) do |&block|
+    orig_verbose = $VERBOSE
+    $VERBOSE = nil
+    result = block.call
+    $VERBOSE = orig_verbose
+    result
   end
 end
