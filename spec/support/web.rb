@@ -1,3 +1,4 @@
+# require_with_metadata: true
 # frozen_string_literal: true
 
 require "capybara/rspec"
