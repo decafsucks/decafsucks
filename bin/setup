@@ -67,7 +67,7 @@ end
 # explicitly puts what we are executing, so we use this method instead of Kernel#system and friends
 def system!(*args)
   unless system(*args)
-    msg = args.length == 1 ? args.first.inspect : args.inspect
+    msg = (args.length == 1) ? args.first.inspect : args.inspect
     puts "\n\e[1mCommand failed:\e[0m #{msg}"
 
     exit $?.exitstatus

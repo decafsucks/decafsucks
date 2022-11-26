@@ -11,5 +11,5 @@ cafes.insert(
   lng: 149.13362100,
   rating: 9,
   reviews_count: 1,
-  created_at: Time.now,
+  created_at: Time.now
 )

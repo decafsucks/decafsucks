@@ -1,4 +1,11 @@
 steps:
+  - label: Lint
+    commands:
+      - gem install standard
+      - rubocop
+    plugins:
+      docker#v5.3.0:
+        image: "ruby:3.1"
   - label: Run tests
     commands:
       - HANAMI_ENV=test bin/hanami db create
