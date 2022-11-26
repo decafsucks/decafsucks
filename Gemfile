@@ -29,6 +29,7 @@ end
 group :development, :test do
   # .env file support
   gem "dotenv"
+  gem "standard"
 end
 
 group :test do
