@@ -6,7 +6,6 @@ source "https://rubygems.org"
 gem "hanami", "~> 2.0"
 gem "hanami-router", "~> 2.0"
 gem "hanami-controller", "~> 2.0"
-gem "hanami-cli", github: "hanami/cli", branch: "update-db-classes"
 gem "hanami-view", github: "hanami/view", branch: "main"
 
 # Framework support
