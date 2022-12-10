@@ -8,4 +8,3 @@ require "hanami/prepare"
 
 require_relative "support/rspec"
 require_relative "support/feature_loader"
-Dir[SPEC_ROOT.join("support", "**", "global_config.rb")].each { require _1 }

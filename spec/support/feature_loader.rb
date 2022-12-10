@@ -16,3 +16,5 @@ RSpec.configure do |config|
     end
   end
 end
+
+Dir[SPEC_ROOT.join("support", "**", "global_config.rb")].each { require _1 }
