@@ -3,8 +3,8 @@
 module Decafsucks
   module Persistence
     module Relations
-      class Cafes < ROM::Relation[:sql]
-        schema :cafes, infer: true
+      class Users < ROM::Relation[:sql]
+        schema :users, infer: true
       end
     end
   end
