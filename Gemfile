@@ -3,16 +3,18 @@
 source "https://rubygems.org"
 
 # App framework
-gem "hanami", "~> 2.0"
-gem "hanami-router", "~> 2.0"
-gem "hanami-controller", "~> 2.0"
+gem "hanami", github: "hanami/hanami", branch: "main"
+gem "hanami-assets", github: "hanami/assets", branch: "main"
+gem "hanami-router", github: "hanami/router", branch: "main"
+gem "hanami-cli", github: "hanami/cli", branch: "main"
+gem "hanami-controller", github: "hanami/controller", branch: "main"
 gem "hanami-view", github: "hanami/view", branch: "main"
+gem "hanami-webconsole", github: "hanami/webconsole", branch: "main"
 
 # Framework support
 gem "dry-types"
 gem "puma"
 gem "rake"
-gem "slim"
 
 # Database
 gem "pg"
@@ -22,13 +24,16 @@ gem "sequel"
 
 group :cli, :development, :test do
   # Hanami testing helpers
-  gem "hanami-rspec"
+  gem "hanami-rspec", github: "hanami/rspec", branch: "main"
+end
+
+group :development do
+  gem "standard"
 end
 
 group :development, :test do
   # .env file support
   gem "dotenv"
-  gem "standard"
 end
 
 group :test do
@@ -38,5 +43,6 @@ group :test do
 
   # Web integration testing
   gem "capybara"
+  gem "launchy"
   gem "rack-test"
 end
