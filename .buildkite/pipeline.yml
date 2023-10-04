@@ -5,7 +5,7 @@ steps:
       - rubocop
     plugins:
       docker#v5.3.0:
-        image: "ruby:3.1"
+        image: "ruby:3.2"
   - label: Run tests
     commands:
       - HANAMI_ENV=test bin/hanami db create
