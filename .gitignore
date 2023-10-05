@@ -4,6 +4,9 @@
 # Node modules
 /node_modules
 
+# Compiled assets
+/public
+
 # Data for docker-run services
 /data
 
