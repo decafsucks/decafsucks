@@ -1,6 +1,9 @@
 # Bundler config
 /.bundle
 
+# Node modules
+/node_modules
+
 # Data for docker-run services
 /data
 
