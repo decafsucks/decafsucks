@@ -4,7 +4,7 @@ module.exports = {
     "./public/*.html",
     "./app/assets/**/*",
     "./app/views/**/*.rb",
-    "./app/tempates/**/*",
+    "./app/templates/**/*",
     "./slices/**/assets/**/*",
     "./slices/**/views/**/*.rb",
     "./slices/**/templates/**/*",
