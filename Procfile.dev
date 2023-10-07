@@ -1,2 +1,3 @@
 web: bundle exec hanami server
 assets: bundle exec hanami assets watch
+tailwind: npx tailwindcss --input app/assets/css/tailwind.css --output app/assets/builds/tailwind.css --minify --watch

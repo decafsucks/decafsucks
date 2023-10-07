@@ -4,6 +4,9 @@
 # Node modules
 /node_modules
 
+# Generated (pre-compilation) assets
+/app/assets/builds
+
 # Compiled assets
 /public
 
