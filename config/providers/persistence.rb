@@ -31,6 +31,10 @@ Hanami.app.register_provider :persistence, namespace: true do
     register "rom", ROM.container(rom_config)
   end
 
+  stop do
+    target["persistence.rom"].disconnect
+  end
+
   define_method(:silence_warnings) do |&block|
     orig_verbose = $VERBOSE
     $VERBOSE = nil
