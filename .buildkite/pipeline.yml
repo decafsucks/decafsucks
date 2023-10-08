@@ -10,6 +10,7 @@ steps:
     commands:
       - HANAMI_ENV=test bin/hanami db create
       - HANAMI_ENV=test bin/hanami db migrate
+      - bundle exec rake tailwind:compile
       - bundle exec hanami assets compile
       - bundle exec rake
     plugins:

@@ -12,9 +12,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
   "devDependencies": {
-    "hanami-assets": "github:hanami/assets-js"
+    "hanami-assets": "github:hanami/assets-js",
+    "tailwindcss": "^3.3.3"
   }
 }
