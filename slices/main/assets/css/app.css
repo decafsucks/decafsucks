@@ -1,3 +1,15 @@
 body {
   background-color: blanchedalmond;
 }
+
+:fullscreen {
+  background-color: pink;
+  color: green;
+}
+
+.example {
+  display: grid;
+  transition: all .8s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}

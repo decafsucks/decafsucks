@@ -5,7 +5,10 @@
     "assets": "node config/assets.mjs"
   },
   "dependencies": {
-    "hanami-assets": "github:hanami/assets-js#main"
+    "hanami-assets": "github:hanami/assets-js#main",
+    "autoprefixer": "^10.4.16",
+    "esbuild-postcss": "^0.0.4",
+    "postcss": "^8.4.31"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
