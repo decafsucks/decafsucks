@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: 87ed48be7327c627bc2bcd73f8cf53afd3d680cf
+  revision: 1683c758e74c4d2c1ea9bc074d5acda07af0a9a3
   branch: main
   specs:
     hanami-assets (2.1.0.beta2)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/cli.git
-  revision: 319b81a0c72cc92cb22ce8ab2e543ec1ae482482
+  revision: 86c149b4f299ef4f0c3102ada9354f1dcba70828
   branch: main
   specs:
     hanami-cli (2.1.0.beta2)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: 1f31d7f9c92573c06526a69816c9c9dcd55f393f
+  revision: c406d35695a5ab2c6393d7ae47015002eb7cf2c2
   branch: main
   specs:
     hanami-controller (2.1.0.beta2)
@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 09796f67953be0647ab817d750356733606f8e6f
+  revision: 0a986a33e0d15303f0f51b51295f2ca4d82fc949
   branch: main
   specs:
     hanami (2.1.0.beta2.1)
@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 15da1b1e68b6121a70b0e8da85156997221ae4f2
+  revision: 8514984b1ef094a10782c8d3b7e9814a8a03cbef
   branch: main
   specs:
     hanami-view (2.1.0.beta2)
@@ -89,7 +89,7 @@ GIT
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
       temple (~> 0.10.0, >= 0.10.2)
-      tilt (~> 2.0, >= 2.0.6)
+      tilt (~> 2.3)
       zeitwerk (~> 2.6)
 
 GIT
@@ -247,7 +247,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    regexp_parser (2.8.1)
+    regexp_parser (2.8.2)
     rexml (3.2.6)
     rom (5.3.0)
       rom-changeset (~> 5.3, >= 5.3.0)
@@ -316,18 +316,18 @@ GEM
     sequel (5.73.0)
       bigdecimal
     shellany (0.0.1)
-    standard (1.31.1)
+    standard (1.31.2)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.56.2)
+      rubocop (~> 1.56.4)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.2)
     standard-custom (1.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50)
-    standard-performance (1.2.0)
+    standard-performance (1.2.1)
       lint_roller (~> 1.1)
-      rubocop-performance (~> 1.19.0)
+      rubocop-performance (~> 1.19.1)
     temple (0.10.3)
     thor (1.2.2)
     tilt (2.3.0)
