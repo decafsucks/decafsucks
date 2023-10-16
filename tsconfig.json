@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@app/*": ["./app/assets/*"],
+      "@main/*": ["./slices/main/assets/*"]
+    }
+  }
+}
