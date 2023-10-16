@@ -1,19 +1,13 @@
 {
   "name": "decafsucks",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "assets": "node config/assets.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "hanami-assets": "github:hanami/assets-js#main"
+  },
   "devDependencies": {
-    "hanami-assets": "github:hanami/assets-js",
     "tailwindcss": "^3.3.3"
   }
 }
