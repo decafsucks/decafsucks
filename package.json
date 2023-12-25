@@ -1,8 +1,9 @@
 {
   "name": "decafsucks",
   "private": true,
+  "type": "module",
   "scripts": {
-    "assets": "node config/assets.mjs"
+    "assets": "node config/assets.js"
   },
   "dependencies": {
     "hanami-assets": "github:hanami/assets-js#main",
