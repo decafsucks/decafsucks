@@ -16,8 +16,10 @@ RSpec.configure do |config|
   Dir[SPEC_ROOT.join("slices", "*")].each do |slice_dir|
     slice_name = File.basename(slice_dir).to_sym
 
-    config.define_derived_metadata(db: true, file_path: Regexp.escape(slice_dir)) do |metadata|
-      metadata[:factory] = slice_name
+    config.define_derived_metadata(db: true) do |metadata|
+      if (metadata[:absolute_file_path]).match?(Regexp.escape(slice_dir))
+        metadata[:factory] = slice_name
+      end
     end
 
     config.include(Test::DB::FactoryHelper.new(slice_name), factory: slice_name)
