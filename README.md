@@ -1,6 +1,7 @@
 # Decaf Sucks
 
-[![Buildkite build status](https://img.shields.io/buildkite/20f6a2f15ca22d9ff497d9419ae8192fcbdf8d74a7205a5565?logo=buildkite&logoColor=white)](https://buildkite.com/timriley/decafsucks)
+<!-- [![Buildkite build status](https://img.shields.io/buildkite/20f6a2f15ca22d9ff497d9419ae8192fcbdf8d74a7205a5565?logo=buildkite&logoColor=white)](https://buildkite.com/timriley/decafsucks) -->
+[![ci](https://github.com/decafsucks/decafsucks/actions/workflows/ci.yml/badge.svg)](https://github.com/decafsucks/decafsucks/actions/workflows/ci.yml)
 
 Decaf Sucks was once a thriving little cafe review app and community.
 
