@@ -190,6 +190,7 @@ GEM
     faker (3.4.1)
       i18n (>= 1.8.11, < 2)
     ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     formatador (1.1.0)
     guard (2.18.1)
       formatador (>= 0.2.4)
@@ -234,6 +235,8 @@ GEM
     nenv (0.3.0)
     nio4r (2.7.3)
     nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -353,6 +356,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   capybara
