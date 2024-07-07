@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Test::Factory.define(:cafe) do |f|
+Test::Factories::Main.define(:cafe) do |f|
   f.name { "#{fake(:coffee, :blend_name)} Cafe" }
   f.name_dmetaphone { |name| "cafe" } # TODO: add real double metaphone support
   f.address { fake(:address, :full_address) }

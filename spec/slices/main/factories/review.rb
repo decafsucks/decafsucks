@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Test::Factory.define(:review) do |f|
+Test::Factories::Main.define(:review) do |f|
   f.association :author
   f.association :cafe
   f.body { fake(:hipster, :paragraph) }

@@ -1,9 +1,8 @@
-# auto_register: false
 # frozen_string_literal: true
 
-module Decafsucks
+module Main
   module Relations
-    class Cafes < ROM::Relation[:sql]
+    class Cafes < Main::DB::Relation
       schema :cafes, infer: true
     end
   end

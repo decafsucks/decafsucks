@@ -1,9 +1,8 @@
-# auto_register: false
 # frozen_string_literal: true
 
-module Decafsucks
+module Main
   module Relations
-    class Reviews < ROM::Relation[:sql]
+    class Reviews < Main::DB::Relation
       schema :reviews, infer: true do
         associations do
           belongs_to :users, as: :author

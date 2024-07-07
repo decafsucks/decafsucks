@@ -2,7 +2,7 @@
 
 module Main
   module Repos
-    class CafeRepo < Main::Repo[:cafes]
+    class CafeRepo < Main::DB::Repo
       def latest
         cafes.order { created_at.desc }.to_a
       end

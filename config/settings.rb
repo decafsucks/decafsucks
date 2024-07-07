@@ -2,6 +2,5 @@
 
 module Decafsucks
   class Settings < Hanami::Settings
-    setting :database_url
   end
 end
