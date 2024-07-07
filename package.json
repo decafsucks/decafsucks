@@ -6,7 +6,7 @@
     "assets": "node config/assets.js"
   },
   "dependencies": {
-    "hanami-assets": "github:hanami/assets-js#main",
+    "hanami-assets": "^2.1.1",
     "typescript": "^5.2.2"
   },
   "devDependencies": {

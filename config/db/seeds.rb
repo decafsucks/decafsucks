@@ -1,6 +1,8 @@
 # Sample data
 
-rom = Hanami.app["persistence.rom"]
+return unless Hanami.env == :development
+
+rom = Hanami.app["db.rom"]
 cafes = rom.relations["cafes"]
 
 cafes.insert(

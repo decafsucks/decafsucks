@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.1
--- Dumped by pg_dump version 15.1
+-- Dumped from database version 16.3
+-- Dumped by pg_dump version 16.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -169,3 +169,9 @@ ALTER TABLE ONLY public.reviews
 -- PostgreSQL database dump complete
 --
 
+SET search_path TO "$user", public;
+
+INSERT INTO schema_migrations (filename) VALUES
+('20221123201330_create_cafes.rb'),
+('20221218104629_create_users.rb'),
+('20221218110244_create_reviews.rb');
