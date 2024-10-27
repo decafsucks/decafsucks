@@ -2,7 +2,7 @@
 
 return unless Hanami.env == :development
 
-rom = Hanami.app["db.rom"]
+rom = Main::Slice["db.rom"]
 cafes = rom.relations["cafes"]
 
 cafes.insert(
