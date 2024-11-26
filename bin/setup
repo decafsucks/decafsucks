@@ -13,10 +13,7 @@ def setup
   system! "bundle check || bundle install"
 
   header "💾 Preparing databases"
-  system! "bin/hanami db create"
-  system! "bin/hanami db migrate"
-  system! "HANAMI_ENV=test bin/hanami db create"
-  system! "HANAMI_ENV=test bin/hanami db migrate"
+  system! "bundle exec hanami db prepare"
 
   header "⭐️ Five stars, everything is fantastic!"
   puts "For commonly needed commands, run:\n"
@@ -46,7 +43,7 @@ def help
       bin/setup
           # set up the app
 
-      bin/hanami server
+      bundle exec hanami dev
           # run app locally
 
       bundle exec rspec
