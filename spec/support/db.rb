@@ -1,7 +1,7 @@
 # require_with_metadata: true
 # frozen_string_literal: true
 
-require_relative "db/database_cleaner"
+require_relative "db/cleaning"
 require_relative "db/factories"
 
 RSpec.configure do |config|
@@ -15,5 +15,10 @@ RSpec.configure do |config|
     end
 
     config.include(Test::DB::FactoryHelper.new(slice), factory: slice_name)
+  end
+
+  # Mark feature specs as requiring db setup
+  config.define_derived_metadata(type: :feature) do |metadata|
+    metadata[:db] = true
   end
 end
