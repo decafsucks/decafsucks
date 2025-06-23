@@ -10,7 +10,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.3.5
+          ruby-version: 3.4.4
           bundler-cache: true
       - name: Rubocop
         run: bundle exec rubocop
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:16-alpine
+        image: postgres:17-alpine
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
@@ -29,12 +29,12 @@ jobs:
       - uses: ruby/setup-ruby@v1
         name: Set up Ruby
         with:
-          ruby-version: 3.3.5
+          ruby-version: 3.4.4
           bundler-cache: true
       - uses: actions/setup-node@v4
         name: Set up Node
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       - name: Run tests
