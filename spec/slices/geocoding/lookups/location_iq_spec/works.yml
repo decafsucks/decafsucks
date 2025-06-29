@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://us1.locationiq.com/v1/search?accept-language=en&format=json&key=pk.8157c59a8f4f7c5778a018e4432fde2c&q=sigulda
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.13.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 29 Jun 2025 20:51:51 GMT
+      content-type:
+      - application/json; charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      x-powered-by:
+      - LocationIQ
+      access-control-allow-origin:
+      - "*"
+      cf-cache-status:
+      - DYNAMIC
+      report-to:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=ljEc62BXjUIMEp%2FE5P7Im9i6HwwBTQv%2B9Y8GQWpqpw6Yk7FIJwrOKtuvI1xoTP07zcZRSSl4BcFJruytwO9PAyNKmWW0L%2FfUkou9g%2BA%2FZF6LqePh6W11Cmi0sfrgTetEfXVD63OFZzFg5tbPsIYCtA%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      server:
+      - cloudflare
+      cf-ray:
+      - 95784de5f9ed8d52-HEL
+      server-timing:
+      - cfL4;desc="?proto=TCP&rtt=15438&min_rtt=14392&rtt_var=7489&sent=6&recv=8&lost=0&retrans=0&sent_bytes=3921&recv_bytes=1891&delivery_rate=177680&cwnd=250&unsent_bytes=0&cid=4abec3ca6945cd67&ts=151&x=0"
+    body:
+      encoding: UTF-8
+      string: '[{"place_id":"163450821","licence":"https:\/\/locationiq.com\/attribution","osm_type":"relation","osm_id":"1792254","boundingbox":["57.1330047","57.1890902","24.7853086","24.9028577"],"lat":"57.1540561","lon":"24.8567141","display_name":"Sigulda,
+        Siguldas novads, LV-2150, Latvia","class":"boundary","type":"administrative","importance":0.6265456153713503,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/poi_boundary_administrative.p.20.png"},{"place_id":"163454644","licence":"https:\/\/locationiq.com\/attribution","osm_type":"way","osm_id":"113898713","boundingbox":["57.1551832","57.155641","24.8522069","24.8532871"],"lat":"57.15540085","lon":"24.85276646802214","display_name":"Sigulda,
+        6, Pils iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"tourism","type":"hotel","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/accommodation_hotel2.p.20.png"},{"place_id":"163439872","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"7804039711","boundingbox":["57.1531519","57.1532519","24.8555197","24.8556197"],"lat":"57.1532019","lon":"24.8555697","display_name":"Sigulda,
+        Stacijas iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"railway","type":"stop","importance":0.10005755016403445},{"place_id":"163452815","licence":"https:\/\/locationiq.com\/attribution","osm_type":"way","osm_id":"365516876","boundingbox":["57.1721854","57.1723832","24.849489","24.8499147"],"lat":"57.172276100000005","lon":"24.849706344554104","display_name":"Water
+        tourist camp \"Sigulda\", P\u013cavziedu iela, Krimulda, Sigulda, Siguldas
+        novads, LV-2150, Latvia","class":"tourism","type":"camp_site","importance":0.10005755016403445},{"place_id":"163440330","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"1737434642","boundingbox":["57.1613569","57.1614569","24.850824","24.850924"],"lat":"57.1614069","lon":"24.850874","display_name":"Sigulda,
+        C\u0113su iela, Krimulda, Sigulda, Siguldas novads, LV-2150, Latvia","class":"tourism","type":"information","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/amenity_information.p.20.png"},{"place_id":"163441938","licence":"https:\/\/locationiq.com\/attribution","osm_type":"way","osm_id":"290371885","boundingbox":["57.153132","57.1535359","24.8548739","24.8577776"],"lat":"57.15332745","lon":"24.85627988441904","display_name":"Sigulda,
+        Stacijas iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"railway","type":"platform","importance":0.10005755016403445},{"place_id":"163453965","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"3379778628","boundingbox":["57.1461806","57.1462806","24.8577668","24.8578668"],"lat":"57.1462306","lon":"24.8578168","display_name":"Sigulda,
+        Str\u0113lnieku iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"highway","type":"bus_stop","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/transport_bus_stop2.p.20.png"},{"place_id":"164297901","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"9231152340","boundingbox":["57.1458623","57.1459623","24.8603763","24.8604763"],"lat":"57.1459123","lon":"24.8604263","display_name":"Sigulda,
+        Vidzemes \u0161oseja, Sigulda, Siguldas novads, LV-2150, Latvia","class":"highway","type":"bus_stop","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/transport_bus_stop2.p.20.png"}]'
+  recorded_at: Sun, 29 Jun 2025 20:51:51 GMT
+recorded_with: VCR 6.3.1

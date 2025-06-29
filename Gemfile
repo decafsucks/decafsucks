@@ -19,6 +19,10 @@ gem "rake"
 # Database
 gem "pg"
 
+# Geocoding
+gem "geocoder"
+gem "faraday"
+
 group :cli, :development, :test do
   # Hanami web server reloading on file changes
   gem "hanami-reloader", "~> 2.2.0"
@@ -44,8 +48,11 @@ group :test do
   gem "database_cleaner-sequel"
   gem "rom-factory"
 
-  # Web integration testing
+  # Web testing
   gem "capybara"
   gem "launchy"
   gem "rack-test"
+
+  # Integration testing
+  gem "vcr"
 end
