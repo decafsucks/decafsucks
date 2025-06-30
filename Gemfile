@@ -21,9 +21,6 @@ gem "pg"
 
 # Core tools
 gem "dry-struct"
-
-# Geocoding
-gem "geocoder"
 gem "faraday"
 
 group :cli, :development, :test do
