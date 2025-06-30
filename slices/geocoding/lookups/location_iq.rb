@@ -5,15 +5,14 @@ require "faraday"
 module Geocoding
   module Lookups
     class LocationIQ
-      URL = "https://us1.locationiq.com"
+      URL = "https://us1.locationiq.com/v1"
 
       def initialize(api_key:)
         @api_key = api_key
       end
 
-      # TODO: can I put /v1 in the faraday connection URL? It wasn't working when I tried
       def search(query)
-        response = connection.get("/v1/search") { |request|
+        response = connection.get("search") { |request|
           request.params["q"] = query
         }
 
