@@ -37,6 +37,8 @@ module Test
         slice_name = File.basename(slice_dir).to_sym
         slice = Hanami.app.slices[slice_name]
 
+        next unless slice.key?("db.rom")
+
         factory = ROM::Factory.configure { |config|
           config.rom = slice["db.rom"]
         }
