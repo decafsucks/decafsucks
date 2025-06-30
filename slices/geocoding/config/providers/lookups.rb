@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 Geocoding::Slice.register_provider :lookups, namespace: true do
-  prepare do
-    require "geocoder"
-  end
-
   start do
     settings = slice["settings"]
 

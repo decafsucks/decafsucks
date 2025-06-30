@@ -332,6 +332,7 @@ DEPENDENCIES
   capybara
   database_cleaner-sequel
   dotenv
+  dry-struct
   dry-types
   faraday
   geocoder

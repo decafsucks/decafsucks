@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module Geocoding
   class Search
-    include Deps["client"]
+    include Deps[lookup: "lookups.location_iq"]
 
-    # TODO: map these into our own "Result" objects
-    def by_string(str, ...) = client.search(str, ...)
-    def by_coords(lat, lng, ...) = client.search([lat, lng], ...)
+    def search(query) = lookup.search(query)
+    def reverse(lat, lng) = lookup.search(lat, lng)
   end
 end

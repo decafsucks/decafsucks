@@ -19,6 +19,9 @@ gem "rake"
 # Database
 gem "pg"
 
+# Core tools
+gem "dry-struct"
+
 # Geocoding
 gem "geocoder"
 gem "faraday"

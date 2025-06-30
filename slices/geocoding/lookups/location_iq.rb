@@ -11,11 +11,19 @@ module Geocoding
         @api_key = api_key
       end
 
+      # TODO: can I put /v1 in the faraday connection URL? It wasn't working when I tried
       def search(query)
-        # TODO: can I put /v1 in the faraday connection URL? It wasn't working when I tried
-        connection.get("/v1/search") do |request|
+        response = connection.get("/v1/search") { |request|
           request.params["q"] = query
-        end
+        }
+
+        response.body.map { |result|
+          Result.new(
+            display_name: result["display_name"],
+            lat: result["lat"],
+            lng: result["lon"]
+          )
+        }
       end
 
       def reverse(lat, lng)

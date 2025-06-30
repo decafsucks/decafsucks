@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://us1.locationiq.com/v1/search?accept-language=en&format=json&key=pk.8157c59a8f4f7c5778a018e4432fde2c&q=sigulda
+    uri: https://us1.locationiq.com/v1/search?accept-language=en&format=json&key=__FAKE_LOCATION_IQ_API_KEY__&q=sigulda
     body:
       encoding: US-ASCII
       string: ''
@@ -15,7 +15,7 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Sun, 29 Jun 2025 20:51:51 GMT
+      - Mon, 30 Jun 2025 08:01:55 GMT
       content-type:
       - application/json; charset=UTF-8
       transfer-encoding:
@@ -31,15 +31,15 @@ http_interactions:
       cf-cache-status:
       - DYNAMIC
       report-to:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=ljEc62BXjUIMEp%2FE5P7Im9i6HwwBTQv%2B9Y8GQWpqpw6Yk7FIJwrOKtuvI1xoTP07zcZRSSl4BcFJruytwO9PAyNKmWW0L%2FfUkou9g%2BA%2FZF6LqePh6W11Cmi0sfrgTetEfXVD63OFZzFg5tbPsIYCtA%3D%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=rBmK%2F4JSgY0aL%2B4eu%2FzN3cgCiqGl2lorUfdrlnxIj9sjIlfj9Y5USlGRs4NEEOPQ4o8%2BahxEKHWU%2BH3Cv5%2BAZBeBnh49TeNNETajClZX1RvAbB99ItV%2FknVF0iWNKYZ8LzU04yX1p7JTjeOgf92Hlw%3D%3D"}],"group":"cf-nel","max_age":604800}'
       nel:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       server:
       - cloudflare
       cf-ray:
-      - 95784de5f9ed8d52-HEL
+      - 957c236e09358d78-HEL
       server-timing:
-      - cfL4;desc="?proto=TCP&rtt=15438&min_rtt=14392&rtt_var=7489&sent=6&recv=8&lost=0&retrans=0&sent_bytes=3921&recv_bytes=1891&delivery_rate=177680&cwnd=250&unsent_bytes=0&cid=4abec3ca6945cd67&ts=151&x=0"
+      - cfL4;desc="?proto=TCP&rtt=15998&min_rtt=15575&rtt_var=6143&sent=6&recv=7&lost=0&retrans=0&sent_bytes=3922&recv_bytes=1891&delivery_rate=259646&cwnd=251&unsent_bytes=0&cid=28defc3d72e304b1&ts=230&x=0"
     body:
       encoding: UTF-8
       string: '[{"place_id":"163450821","licence":"https:\/\/locationiq.com\/attribution","osm_type":"relation","osm_id":"1792254","boundingbox":["57.1330047","57.1890902","24.7853086","24.9028577"],"lat":"57.1540561","lon":"24.8567141","display_name":"Sigulda,
@@ -49,8 +49,8 @@ http_interactions:
         tourist camp \"Sigulda\", P\u013cavziedu iela, Krimulda, Sigulda, Siguldas
         novads, LV-2150, Latvia","class":"tourism","type":"camp_site","importance":0.10005755016403445},{"place_id":"163440330","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"1737434642","boundingbox":["57.1613569","57.1614569","24.850824","24.850924"],"lat":"57.1614069","lon":"24.850874","display_name":"Sigulda,
         C\u0113su iela, Krimulda, Sigulda, Siguldas novads, LV-2150, Latvia","class":"tourism","type":"information","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/amenity_information.p.20.png"},{"place_id":"163441938","licence":"https:\/\/locationiq.com\/attribution","osm_type":"way","osm_id":"290371885","boundingbox":["57.153132","57.1535359","24.8548739","24.8577776"],"lat":"57.15332745","lon":"24.85627988441904","display_name":"Sigulda,
-        Stacijas iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"railway","type":"platform","importance":0.10005755016403445},{"place_id":"163453965","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"3379778628","boundingbox":["57.1461806","57.1462806","24.8577668","24.8578668"],"lat":"57.1462306","lon":"24.8578168","display_name":"Sigulda,
+        Stacijas iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"railway","type":"platform","importance":0.10005755016403445},{"place_id":"163441184","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"3379778627","boundingbox":["57.1460969","57.1461969","24.8576016","24.8577016"],"lat":"57.1461469","lon":"24.8576516","display_name":"Sigulda,
         Str\u0113lnieku iela, Sigulda, Siguldas novads, LV-2150, Latvia","class":"highway","type":"bus_stop","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/transport_bus_stop2.p.20.png"},{"place_id":"164297901","licence":"https:\/\/locationiq.com\/attribution","osm_type":"node","osm_id":"9231152340","boundingbox":["57.1458623","57.1459623","24.8603763","24.8604763"],"lat":"57.1459123","lon":"24.8604263","display_name":"Sigulda,
         Vidzemes \u0161oseja, Sigulda, Siguldas novads, LV-2150, Latvia","class":"highway","type":"bus_stop","importance":0.10005755016403445,"icon":"https:\/\/locationiq.org\/static\/images\/mapicons\/transport_bus_stop2.p.20.png"}]'
-  recorded_at: Sun, 29 Jun 2025 20:51:51 GMT
+  recorded_at: Mon, 30 Jun 2025 08:01:54 GMT
 recorded_with: VCR 6.3.1

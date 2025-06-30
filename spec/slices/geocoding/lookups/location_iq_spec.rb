@@ -5,9 +5,14 @@ RSpec.describe Geocoding::Lookups::LocationIQ do
 
   let(:api_key) { Geocoding::Slice["settings"].location_iq_api_key }
 
-  it "works", :vcr do
+  it "returns results for a search", :vcr do
     results = lookup.search("sigulda")
 
-    p results
+    expect(results.length).to eq 8
+    expect(results.first).to have_attributes(
+      display_name: "Sigulda, Siguldas novads, LV-2150, Latvia",
+      lat: "57.1540561",
+      lng: "24.8567141"
+    )
   end
 end
