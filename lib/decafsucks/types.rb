@@ -3,7 +3,7 @@
 require "dry/types"
 
 module Decafsucks
-  Types = Dry.Types()
+  Types = Dry.Types(default: :strict)
 
   module Types
   end
