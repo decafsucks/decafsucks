@@ -3,7 +3,8 @@
 require "faraday"
 
 module Geocoding
-  module Lookups
+  module Services
+    # Client for geocoding requests services by LocationIQ (https://locationiq.com).
     class LocationIQ
       URL = "https://us1.locationiq.com/v1"
 

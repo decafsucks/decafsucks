@@ -2,10 +2,10 @@
 
 module Geocoding
   class Search
-    include Deps[lookup: "lookups.location_iq"]
+    include Deps[service: "services.location_iq"]
 
-    def search(query) = lookup.search(query)
+    def search(query) = service.search(query)
 
-    def reverse(lat, lng) = lookup.search(lat, lng)
+    def reverse(lat, lng) = service.reverse(lat, lng)
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Geocoding::Lookups::LocationIQ do
+RSpec.describe Geocoding::Services::LocationIQ do
   subject(:lookup) { described_class.new(api_key:) }
 
   let(:api_key) { Geocoding::Slice["settings"].location_iq_api_key }
