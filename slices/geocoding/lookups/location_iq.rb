@@ -35,7 +35,7 @@ module Geocoding
         @connection ||= Faraday.new(
           url: URL,
           params: {
-            :"accept-language" => "en",
+            "accept-language": "en",
             format: "json",
             key: @api_key
           }

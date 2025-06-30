@@ -5,6 +5,7 @@ module Geocoding
     include Deps[lookup: "lookups.location_iq"]
 
     def search(query) = lookup.search(query)
+
     def reverse(lat, lng) = lookup.search(lat, lng)
   end
 end
