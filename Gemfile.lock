@@ -5,6 +5,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.3)
     base64 (0.3.0)
+    bcrypt (3.1.20)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -223,6 +224,11 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     regexp_parser (2.10.0)
+    roda (3.93.0)
+      rack
+    rodauth (2.39.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
     rom (5.4.2)
       rom-changeset (~> 5.4)
       rom-core (~> 5.4)
@@ -325,6 +331,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   capybara
   database_cleaner-sequel
   dotenv
@@ -346,6 +353,7 @@ DEPENDENCIES
   puma
   rack-test
   rake
+  rodauth
   rom-factory
   standard
   vcr
