@@ -62,13 +62,17 @@ module Main
       use_database_authentication_functions? false
       account_password_hash_column :password_hash
 
+      login_route "sign-in"
+      logout_route "sign-out"
+      create_account_route "sign-up"
+
+      already_logged_in { redirect "/" }
+
       # Without this, Roda's render plugin tries to find a "views/layout.erb" in the root of this
       # app (which obviously doesn't exist) and raises an Errno::ENOENT error.
       template_opts layout: nil
 
       login_label "Email"
-
-      already_logged_in { redirect "/" }
     end
 
     route do |r|
