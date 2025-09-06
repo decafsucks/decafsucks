@@ -13,6 +13,8 @@ def setup
   system! "bundle check || bundle install"
 
   header "💾 Preparing databases"
+  # TODO: enable citext extension for databases
+  # psql -U postgres -c "CREATE EXTENSION citext" ${DATABASE_NAME}
   system! "bundle exec hanami db prepare"
 
   header "⭐️ Five stars, everything is fantastic!"
