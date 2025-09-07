@@ -57,7 +57,7 @@ module Main
     plugin :middleware
 
     plugin :rodauth do
-      enable :create_account, :login, :logout, :reset_password
+      enable :create_account, :verify_account, :login, :logout, :reset_password
       enable :hanami_view
 
       db Main::Slice["db.gateway"].connection
@@ -68,6 +68,8 @@ module Main
         # Validate presence of name
         throw_error_status(422, "name", "must be present") if param("name").empty?
       end
+
+      verify_account_set_password? false
 
       after_create_account do
         db[:users].insert(
@@ -81,6 +83,7 @@ module Main
       create_account_route "sign-up"
       reset_password_request_route "forgot-password"
       reset_password_route "reset-password"
+      verify_account_resend_route "resend-verify-account"
 
       already_logged_in { redirect "/" }
 
