@@ -42,6 +42,7 @@ jobs:
           DATABASE_URL: postgres://postgres:password@localhost:5432/decafsucks_test
         run: |
           HANAMI_ENV=test bundle exec hanami db create
+          PGPASSWORD=password psql -h localhost -U postgres -d decafsucks_test -c "CREATE EXTENSION IF NOT EXISTS citext;"
           HANAMI_ENV=test bundle exec hanami db migrate --no-dump
           bundle exec rake tailwind:compile
           bundle exec hanami assets compile
