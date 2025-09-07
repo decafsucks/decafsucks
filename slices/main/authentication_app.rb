@@ -52,10 +52,12 @@ end
 
 module Main
   class AuthenticationApp < Roda
+    Hanami.app.start :mail
+
     plugin :middleware
 
     plugin :rodauth do
-      enable :create_account, :login, :logout
+      enable :create_account, :login, :logout, :reset_password
       enable :hanami_view
 
       db Main::Slice["db.gateway"].connection
@@ -77,6 +79,8 @@ module Main
       login_route "sign-in"
       logout_route "sign-out"
       create_account_route "sign-up"
+      reset_password_request_route "forgot-password"
+      reset_password_route "reset-password"
 
       already_logged_in { redirect "/" }
 
