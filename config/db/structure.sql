@@ -195,7 +195,7 @@ CREATE TABLE public.schema_migrations (
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    email text NOT NULL,
+    account_id integer,
     name text NOT NULL,
     reviews_count integer DEFAULT 0 NOT NULL,
     created_at timestamp without time zone DEFAULT (now() AT TIME ZONE 'utc'::text) NOT NULL
@@ -374,7 +374,7 @@ ALTER TABLE ONLY public.reviews
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES
+('20221120201330_create_rodauth_tables.rb'),
 ('20221123201330_create_cafes.rb'),
 ('20221218104629_create_users.rb'),
-('20221218110244_create_reviews.rb'),
-('20250906113907_create_rodauth_tables.rb');
+('20221218110244_create_reviews.rb');

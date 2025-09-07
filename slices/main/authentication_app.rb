@@ -62,6 +62,18 @@ module Main
       use_database_authentication_functions? false
       account_password_hash_column :password_hash
 
+      before_create_account do
+        # Validate presence of name
+        throw_error_status(422, "name", "must be present") if param("name").empty?
+      end
+
+      after_create_account do
+        db[:users].insert(
+          account_id: account[:id],
+          name: param("name")
+        )
+      end
+
       login_route "sign-in"
       logout_route "sign-out"
       create_account_route "sign-up"

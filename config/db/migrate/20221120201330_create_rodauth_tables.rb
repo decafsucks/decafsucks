@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-# This migration adapter from https://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html
+# Adapted from https://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html
 ROM::SQL.migration do
   up do
     extension :date_arithmetic
 
     # Used by the account verification and close account features
-    create_table(:account_statuses) do
+    create_table :account_statuses do
       Integer :id, primary_key: true
       String :name, null: false, unique: true
     end
     from(:account_statuses).import([:id, :name], [[1, "Unverified"], [2, "Verified"], [3, "Closed"]])
 
-    create_table(:accounts) do
+    create_table :accounts do
       primary_key :id, type: :Bignum
       foreign_key :status_id, :account_statuses, null: false, default: 1
       citext :email, null: false
@@ -26,7 +26,7 @@ ROM::SQL.migration do
     end
 
     # Used by the password reset feature
-    create_table(:account_password_reset_keys) do
+    create_table :account_password_reset_keys do
       foreign_key :id, :accounts, primary_key: true, type: :Bignum
       String :key, null: false
       DateTime :deadline, deadline_opts[1]
@@ -34,7 +34,7 @@ ROM::SQL.migration do
     end
 
     # Used by the account verification feature
-    create_table(:account_verification_keys) do
+    create_table :account_verification_keys do
       foreign_key :id, :accounts, primary_key: true, type: :Bignum
       String :key, null: false
       DateTime :requested_at, null: false, default: Sequel::CURRENT_TIMESTAMP
@@ -42,14 +42,14 @@ ROM::SQL.migration do
     end
 
     # Used by the remember me feature
-    create_table(:account_remember_keys) do
+    create_table :account_remember_keys do
       foreign_key :id, :accounts, primary_key: true, type: :Bignum
       String :key, null: false
       DateTime :deadline, deadline_opts[14]
     end
 
     # Used by the email auth feature
-    create_table(:account_email_auth_keys) do
+    create_table :account_email_auth_keys do
       foreign_key :id, :accounts, primary_key: true, type: :Bignum
       String :key, null: false
       DateTime :deadline, deadline_opts[1]
