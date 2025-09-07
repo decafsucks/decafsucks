@@ -9,9 +9,11 @@ module Main
       private
 
       def require_authentication(request, response)
-        handle_rodauth_redirects(response) do
-          request.env["rodauth"].require_account
-        end
+        rodauth = request.env["rodauth"]
+
+        handle_rodauth_redirects(response) { rodauth.require_account }
+
+        response[:current_account_id] = rodauth.account_id
       end
 
       # Converts a Rodauth-initiated redirect into one that works for Hanami actions.

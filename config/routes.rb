@@ -6,6 +6,9 @@ module Decafsucks
       use Main::AuthenticationApp
 
       root to: "home.show"
+
+      get "/account", to: "account.show"
+
       get "/reviews/new", to: "reviews.new"
     end
   end
