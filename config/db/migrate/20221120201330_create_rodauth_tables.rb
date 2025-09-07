@@ -47,19 +47,10 @@ ROM::SQL.migration do
       String :key, null: false
       DateTime :deadline, deadline_opts[14]
     end
-
-    # Used by the email auth feature
-    create_table :account_email_auth_keys do
-      foreign_key :id, :accounts, primary_key: true, type: :Bignum
-      String :key, null: false
-      DateTime :deadline, deadline_opts[1]
-      DateTime :email_last_sent, null: false, default: Sequel::CURRENT_TIMESTAMP
-    end
   end
 
   down do
     drop_table(
-      :account_email_auth_keys,
       :account_remember_keys,
       :account_verification_keys,
       :account_password_reset_keys,
