@@ -2,6 +2,7 @@
 
 require "rodauth"
 
+# The Hanami integration feature for Rodauth.
 Rodauth::Feature.define(:hanami) do
   auth_value_method :hanami_base_view_class, nil
 
@@ -42,8 +43,20 @@ Rodauth::Feature.define(:hanami) do
   def view_rendering
     @view_rendering ||= base_view.rendering(
       format: base_view.config.default_format,
-      context: base_view.config.default_context
+      context: view_context
     )
+  end
+
+  def view_context
+    @view_context ||= begin
+      action_request = Hanami::Action::Request.new(
+        env: request.env,
+        params: request.params,
+        session_enabled: true
+      )
+
+      base_view.config.default_context.class.new(request: action_request)
+    end
   end
 
   def base_view

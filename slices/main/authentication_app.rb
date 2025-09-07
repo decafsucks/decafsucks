@@ -57,6 +57,8 @@ module Main
       verify_login_change_route "verify-email-change"
       change_password_route "account/change-password"
 
+      flash_error_key :alert
+
       already_logged_in { redirect "/" }
 
       hanami_base_view_class -> { Main::View }

@@ -4,6 +4,16 @@
     <%= stylesheet_tag "app" %>
   </head>
   <body>
+    <% if flash[:alert] %>
+      <div class="flash">
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end %>
     <%= yield %>
     <%= javascript_tag "app" %>
   </body>
