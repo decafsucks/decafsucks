@@ -18,7 +18,9 @@ module Main
         :remember,
         :reset_password,
         :change_login,
-        :verify_login_change
+        :verify_login_change,
+        :change_password,
+        :change_password_notify
 
       enable :hanami
 
@@ -53,6 +55,7 @@ module Main
       remember_route nil # We remember always. Don't expose user preferences screen.
       change_login_route "account/change-email"
       verify_login_change_route "verify-email-change"
+      change_password_route "account/change-password"
 
       already_logged_in { redirect "/" }
 
