@@ -2,53 +2,7 @@
 
 require "roda"
 require "rodauth"
-
-Rodauth::Feature.define(:hanami_view) do
-  # Renders templates with layout.
-  def view(template, title)
-    return super unless view_template?(template)
-
-    view_rendering.template(
-      base_view.class.layout_path(base_view.config.layout),
-      view_rendering.scope(rodauth: self)
-    ) { render(template) }
-  end
-
-  # Renders templates without layout.
-  def render(template)
-    return super unless view_template?(template)
-
-    view_rendering.template(
-      view_template_name(template),
-      view_rendering.scope(rodauth: self)
-    )
-  end
-
-  private
-
-  def view_template?(template_name)
-    view_rendering.renderer.send(
-      :lookup,
-      view_template_name(template_name),
-      base_view.config.default_format
-    )
-  end
-
-  def view_template_name(template_name)
-    "authentication_app/#{template_name.tr("-", "_")}"
-  end
-
-  def view_rendering
-    @view_rendering ||= base_view.rendering(
-      format: base_view.config.default_format,
-      context: base_view.config.default_context
-    )
-  end
-
-  def base_view
-    @base_view ||= Class.new(Main::View).new
-  end
-end
+require "rodauth/hanami" # see lib/rodauth/hanami.rb
 
 module Main
   class AuthenticationApp < Roda
@@ -58,7 +12,7 @@ module Main
 
     plugin :rodauth do
       enable :create_account, :verify_account, :login, :logout, :remember, :reset_password
-      enable :hanami_view
+      enable :hanami
 
       db Main::Slice["db.gateway"].connection
       use_database_authentication_functions? false
@@ -91,6 +45,8 @@ module Main
       remember_route nil # We default to always remembering. Don't expose remember preferences.
 
       already_logged_in { redirect "/" }
+
+      hanami_base_view_class -> { Main::View }
 
       # Without this, Roda's render plugin tries to find a "views/layout.erb" in the root of this
       # app (which obviously doesn't exist) and raises an Errno::ENOENT error.
