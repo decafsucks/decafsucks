@@ -41,6 +41,14 @@ ROM::SQL.migration do
       DateTime :email_last_sent, null: false, default: Sequel::CURRENT_TIMESTAMP
     end
 
+    # Used by the verify login change feature
+    create_table :account_login_change_keys do
+      foreign_key :id, :accounts, primary_key: true, type: :Bignum
+      String :key, null: false
+      String :login, null: false
+      DateTime :deadline, deadline_opts[1]
+    end
+
     # Used by the remember me feature
     create_table :account_remember_keys do
       foreign_key :id, :accounts, primary_key: true, type: :Bignum
@@ -52,6 +60,7 @@ ROM::SQL.migration do
   down do
     drop_table(
       :account_remember_keys,
+      :account_login_change_keys,
       :account_verification_keys,
       :account_password_reset_keys,
       :accounts,

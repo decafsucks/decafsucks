@@ -11,7 +11,15 @@ module Main
     plugin :middleware
 
     plugin :rodauth do
-      enable :create_account, :verify_account, :login, :logout, :remember, :reset_password
+      enable :create_account,
+        :verify_account,
+        :login,
+        :logout,
+        :remember,
+        :reset_password,
+        :change_login,
+        :verify_login_change
+
       enable :hanami
 
       db Main::Slice["db.gateway"].connection
@@ -42,7 +50,9 @@ module Main
       reset_password_request_route "forgot-password"
       reset_password_route "reset-password"
       verify_account_resend_route "resend-verify-account"
-      remember_route nil # We default to always remembering. Don't expose remember preferences.
+      remember_route nil # We remember always. Don't expose user preferences screen.
+      change_login_route "account/change-email"
+      verify_login_change_route "verify-email-change"
 
       already_logged_in { redirect "/" }
 
