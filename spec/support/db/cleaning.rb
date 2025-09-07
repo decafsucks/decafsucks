@@ -4,6 +4,11 @@ require "database_cleaner/sequel"
 
 # Clean the databases between tests tagged as `:db`
 RSpec.configure do |config|
+  skip_cleaning_tables = [
+    "account_statuses",
+    "schema_migrations"
+  ]
+
   # Returns all the configured databases across the app and its slices.
   #
   # Used in the before/after hooks below to ensure each database is cleaned between examples.
@@ -21,7 +26,7 @@ RSpec.configure do |config|
 
   config.before :suite do
     all_databases.call.each do |db|
-      DatabaseCleaner[:sequel, db: db].clean_with :truncation, except: ["schema_migrations"]
+      DatabaseCleaner[:sequel, db: db].clean_with :truncation, except: skip_cleaning_tables
     end
   end
 
