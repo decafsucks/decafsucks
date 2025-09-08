@@ -3,7 +3,7 @@
   <%== rodauth.csrf_tag %>
   <div class="form-group mb-3">
     <label for="name" class="form-label">Name</label>
-    <input required="required" type="text" class="form-control" name="name" id="name">
+    <input required="required" type="text" class="form-control" id="name" name="name" value="<%= rodauth.param("name") %>">
   </div>
   <%== rodauth.render("login-field") %>
   <%== rodauth.render("login-confirm-field") if rodauth.require_login_confirmation? %>
