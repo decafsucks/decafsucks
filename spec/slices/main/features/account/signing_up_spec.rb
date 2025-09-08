@@ -7,7 +7,6 @@ RSpec.describe "Account / Signing up", :web, :db, :mail do
     fill_in "Name", with: "Jane"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "princess-of-power"
-    fill_in "Confirm Password", with: "princess-of-power"
     click_on "Create Account"
 
     expect(page).to have_flash_message "An email has been sent to you with a link to verify your account", type: :notice

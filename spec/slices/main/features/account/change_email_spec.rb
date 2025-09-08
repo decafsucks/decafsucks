@@ -13,7 +13,7 @@ RSpec.describe "Account / Change email", :web, :db, :mail do
     visit "/sign-in"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "password123"
-    click_on "Login"
+    click_on "Sign in"
 
     visit "/account/change-email"
     fill_in "Email", with: "jane-new@example.com"
@@ -33,20 +33,20 @@ RSpec.describe "Account / Change email", :web, :db, :mail do
     expect(page).to have_flash_message "Your login change has been verified", type: :notice
 
     visit "/sign-out"
-    click_on "Logout"
+    click_on "Sign out"
 
     # Old email does not work
     visit "/sign-in"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "password123"
-    click_on "Login"
-    expect(page).to have_content "no matching login"
+    click_on "Sign in"
+    expect(page).to have_content "no matching account"
 
     # New email does work
     fill_in "Email", with: "jane-new@example.com"
     fill_in "Password", with: "password123"
-    click_on "Login"
+    click_on "Sign in"
 
-    expect(page).to have_flash_message "You have been logged in", type: :notice
+    expect(page).to have_flash_message "You have been signed in", type: :notice
   end
 end
