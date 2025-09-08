@@ -5,12 +5,12 @@
   </head>
   <body>
     <% if flash[:alert] %>
-      <div class="flash">
+      <div class="flash flash-alert">
         <p><%= flash[:alert] %></p>
       </div>
     <% end %>
     <% if flash[:notice] %>
-      <div class="flash">
+      <div class="flash flash-notice">
         <p><%= flash[:notice] %></p>
       </div>
     <% end %>

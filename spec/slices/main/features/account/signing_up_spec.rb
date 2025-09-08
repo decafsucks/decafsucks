@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "Account / Signing up", :web, :db do
+RSpec.describe "Account / Signing up", :web, :db, :mail do
   specify do
     visit "/sign-up"
 
@@ -10,18 +10,13 @@ RSpec.describe "Account / Signing up", :web, :db do
     fill_in "Confirm Password", with: "princess-of-power"
     click_on "Create Account"
 
-    # TODO: flash message selector
-    expect(page).to have_content("An email has been sent to you with a link to verify your account")
+    expect(page).to have_flash_message "An email has been sent to you with a link to verify your account", type: :notice
 
-    verify_account_path = Mail::TestMailer.deliveries.last.body.to_s
-      .scan(%r{https?://[^\s]+})
-      .first
-      .then { URI(_1) }
-      .then { "#{_1.path}?#{_1.query}" }
+    expect(last_mail).to be_delivered_to("jane@example.com").with_subject "Verify Account"
 
-    visit verify_account_path
+    visit extract_mail_link
     click_on "Verify Account"
 
-    expect(page).to have_content("Your account has been verified")
+    expect(page).to have_flash_message "Your account has been verified", type: :notice
   end
 end

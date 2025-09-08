@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "capybara/rspec"
+require_relative "web/matchers"
 require_relative "web/helpers"
 
 Capybara.app = Hanami.app
