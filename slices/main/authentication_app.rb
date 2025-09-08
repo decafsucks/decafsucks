@@ -67,7 +67,7 @@ module Main
 
       already_logged_in { redirect "/" }
 
-      hanami_base_view_class -> { Main::View }
+      hanami_view_class -> { Main::View }
 
       # Without this, Roda's render plugin tries to find a "views/layout.erb" in the root of this
       # app (which obviously doesn't exist) and raises an Errno::ENOENT error.

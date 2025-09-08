@@ -3,8 +3,19 @@
 require "rodauth"
 
 # The Hanami integration feature for Rodauth.
+#
+# Allows Rodauth templates to be copied into your app and be rendered through a Hanami::View class.
+# Templates are searched for under `templates/authentication_app/` (this may later become
+# configurable).
+#
+# Must be configured with a `hanami_view_class`, containing a proc that returns the view class.
+#
+# @example
+#   # Inside a `plugin :rodauth` block
+#   enable :hanami
+#   hanami_view_class -> { MyApp::View }
 Rodauth::Feature.define(:hanami) do
-  auth_value_method :hanami_base_view_class, nil
+  auth_value_method :hanami_view_class, nil
 
   # Renders templates with layout.
   def view(template, title)
@@ -60,6 +71,6 @@ Rodauth::Feature.define(:hanami) do
   end
 
   def base_view
-    @base_view ||= Class.new(hanami_base_view_class.call).new
+    @base_view ||= Class.new(hanami_view_class.call).new
   end
 end
