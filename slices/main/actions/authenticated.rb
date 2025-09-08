@@ -11,7 +11,7 @@ module Main
       def require_authentication(request, response)
         rodauth = request.env["rodauth"]
 
-        handle_rodauth_redirects(response) { rodauth.require_account }
+        handle_rodauth_redirects(rodauth, response) { rodauth.require_account }
 
         response[:current_account_id] = rodauth.account_id
       end
@@ -28,7 +28,7 @@ module Main
       # expected structure for Hanami actions, and then re-throwing it.
       #
       # (Later on we'll shift this code into a rodauth-hanami gem or similar.)
-      def handle_rodauth_redirects(response)
+      def handle_rodauth_redirects(rodauth, response)
         halted = catch :halt do
           yield
         end
@@ -36,6 +36,10 @@ module Main
         if halted
           code, headers, body = *halted
 
+          # Copy over Rodauth's flash messages
+          rodauth.flash.next.each { |k, v| response.flash[k] = v }
+
+          # Handle the redirect ourselves
           if (redirect_to = headers["Location"])
             response.redirect(redirect_to, code)
           end
