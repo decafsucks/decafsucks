@@ -4,6 +4,11 @@
     <%= stylesheet_tag "app" %>
   </head>
   <body>
+    <h1>
+      <a href="/">Decaf Sucks</a>
+    </h1>
+    <br>
+
     <% if flash[:alert] %>
       <div class="flash flash-alert">
         <p><%= flash[:alert] %></p>
@@ -14,6 +19,22 @@
         <p><%= flash[:notice] %></p>
       </div>
     <% end %>
+
+    <div>
+      <% if signed_in? %>
+        <p>
+          Signed in: <%= current_user.name %>
+          /
+          <a href="/account">
+            Your account
+          </a>
+          /
+          <a href="/sign-out">Sign out</a>
+        </p>
+      <% end %>
+      <br><br><br>
+    </div>
+
     <%= yield %>
     <%= javascript_tag "app" %>
   </body>
