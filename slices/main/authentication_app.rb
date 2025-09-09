@@ -5,37 +5,61 @@ require "rodauth"
 require "rodauth/hanami" # see lib/rodauth/hanami.rb
 
 module Main
+  # Provides a Roda app to be used for Rodauth-based authentication.
+  #
+  # This app is used as a middleware in our routes.
+  #
+  # @see config/routes.rb
+  # @see https://rodauth.jeremyevans.net
   class AuthenticationApp < Roda
+    # Start the mail provider for Rodauth's email deliveries.
     Hanami.app.start :mail
 
+    # Activate this Roda app (which includes the Rodauth features configured below) as a middleware,
+    # so we can include it in Hanami's routes.
+    #
+    # @see config/routes.rb
     plugin :middleware
 
     plugin :rodauth do
-      enable :create_account,
-        :verify_account,
+      # Enable standard Rodauth features
+      enable(
+        :change_login,
+        :change_password,
+        :change_password_notify,
+        :create_account,
         :login,
         :logout,
         :remember,
         :reset_password,
-        :change_login,
-        :verify_login_change,
-        :change_password,
-        :change_password_notify
+        :verify_account,
+        :verify_login_change
+      )
 
+      # Enable and configure our own Rodauth/Hanami integration feature
+      #
+      # @see lib/rodauth/hanami.rb
       enable :hanami
+      hanami_view_class -> { Main::View }
 
+      # Use our own database connection, and simplify database operation: keep the password hash
+      # column directly in the accounts table, and skip using database-level functions.
       db Main::Slice["db.gateway"].connection
-      use_database_authentication_functions? false
       account_password_hash_column :password_hash
+      use_database_authentication_functions? false
 
       require_password_confirmation? false
       verify_account_set_password? false
 
+      # Configure redirects for signing in and out
+      login_return_to_requested_location? true
+      logout_redirect "/"
+
+      # When signing up, save a user `name` into a new `users` record and associate it with the new
+      # account.
       before_create_account do
-        # Validate presence of name
         throw_error_status(422, "name", "must be present") if param("name").empty?
       end
-
       after_create_account do
         db[:users].insert(
           account_id: account[:id],
@@ -43,38 +67,33 @@ module Main
         )
       end
 
-      login_return_to_requested_location? true
-
+      # Always remember logins across sessions (aka "Remember me").
       after_login do
         remember_login
       end
 
-      logout_redirect "/"
-
-      # Customize routes
+      # Customize routes for Rodauth screens
+      change_login_route "account/change-email"
+      change_password_route "account/change-password"
+      create_account_route "sign-up"
       login_route "sign-in"
       logout_route "sign-out"
-      create_account_route "sign-up"
+      remember_route nil # We remember always. Don't expose user preferences route.
       reset_password_request_route "forgot-password"
       reset_password_route "reset-password"
       verify_account_resend_route "resend-verify-account"
-      remember_route nil # We remember always. Don't expose user preferences route.
-      change_login_route "account/change-email"
       verify_login_change_route "verify-email-change"
-      change_password_route "account/change-password"
 
       flash_error_key :alert
 
       already_logged_in { redirect "/" }
 
-      hanami_view_class -> { Main::View }
-
       # Without this, Roda's render plugin tries to find a "views/layout.erb" in the root of this
       # app (which obviously doesn't exist) and raises an Errno::ENOENT error.
       template_opts layout: nil
 
-      # Customize UI copy
-
+      # Customize UI copy. Prefer "sign in/out" phrasing, and sentence case over title case.
+      #
       # Base
       unverified_account_message "unverified account, please verify before signing in"
 
@@ -106,7 +125,13 @@ module Main
     end
 
     route do |r|
+      # Enable the routes for the Rodauth features configured above.
       r.rodauth
+
+      # Save Rodauth in the Rack request environment so we can access it from a Hanami Action and
+      # require authentication from there.
+      #
+      # @see slices/main/actions/authenticated.rb
       env["rodauth"] = rodauth
     end
   end
