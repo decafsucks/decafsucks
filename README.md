@@ -9,7 +9,19 @@ We’re going to rebuild it as an OSS Hanami 2.0 example application. Watch this
 
 ## Setup
 
-Make sure you have Ruby installed, and Postgres running, then run:
+Install Ruby & Node using [Mise](https://mise.jdx.dev/):
+
+```shell
+mise install
+```
+
+Run Postgres via Docker Compose:
+
+```shell
+docker compose up -d
+```
+
+Then setup the app:
 
 ```
 bin/setup
