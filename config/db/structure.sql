@@ -374,6 +374,7 @@ ALTER TABLE ONLY public.reviews
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES
+('20221117201330_create_citext_extension.rb'),
 ('20221120201330_create_rodauth_tables.rb'),
 ('20221123201330_create_cafes.rb'),
 ('20221218104629_create_users.rb'),
