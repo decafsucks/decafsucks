@@ -7,7 +7,7 @@ module Main
       include Deps["repos.user_repo"]
 
       def signed_in?
-        request.env["rodauth"]&.logged_in?
+        request.env["rodauth"].logged_in?
       end
 
       def current_user

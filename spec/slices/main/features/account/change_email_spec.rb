@@ -33,7 +33,7 @@ RSpec.describe "Account / Change email", :web, :db, :mail do
     expect(page).to have_flash_message "Your login change has been verified", type: :notice
 
     visit "/sign-out"
-    click_on "Sign out"
+    within("main") { click_on "Sign out" }
 
     # Old email does not work
     visit "/sign-in"

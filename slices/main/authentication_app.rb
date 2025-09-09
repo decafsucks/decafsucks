@@ -125,14 +125,14 @@ module Main
     end
 
     route do |r|
-      # Enable the routes for the Rodauth features configured above.
-      r.rodauth
-
-      # Save Rodauth in the Rack request environment so we can access it from a Hanami Action and
-      # require authentication from there.
+      # Save the Rodauth instance in the Rack request environment, so we can access it from a Hanami
+      # Action and require authentication from there.
       #
       # @see slices/main/actions/authenticated.rb
       env["rodauth"] = rodauth
+
+      # Enable the routes for the Rodauth features configured above.
+      r.rodauth
     end
   end
 end

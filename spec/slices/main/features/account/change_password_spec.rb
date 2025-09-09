@@ -23,7 +23,7 @@ RSpec.describe "Account / Change password", :web, :db, :mail do
     expect(page).to have_flash_message "Your password has been changed", type: :notice
 
     visit "/sign-out"
-    click_on "Sign out"
+    within("main") { click_on "Sign out" }
 
     # Old password does not work
     visit "/sign-in"

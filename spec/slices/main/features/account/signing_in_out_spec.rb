@@ -21,7 +21,7 @@ RSpec.describe "Account / Signing in and out", :web, :db do
     expect(current_path).to eq "/"
 
     visit "/sign-out"
-    click_on "Sign out"
+    within("main") { click_on "Sign out" }
 
     expect(page).to have_flash_message "You have been signed out", type: :notice
     expect(current_path).to eq "/"
