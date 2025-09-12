@@ -23,14 +23,23 @@
 
     <div>
       <% if signed_in? %>
-        <p>
+        <div>
           Signed in: <%= current_user.name %>
           /
           <a href="/account">
             Your account
           </a>
           /
-          <a href="/sign-out">Sign out</a>
+          <form method="post" action="/sign-out" class="rodauth" role="form" style="display:inline-block;">
+            <%== rodauth.csrf_tag("/sign-out") %>
+            <input type="submit" class="btn btn-primary" value="Sign out">
+          </form>
+        </div>
+      <% else %>
+        <p>
+          <a href="/sign-in">
+            Sign in
+          </a>
         </p>
       <% end %>
     </div>
