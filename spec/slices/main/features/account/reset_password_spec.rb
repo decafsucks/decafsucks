@@ -21,13 +21,10 @@ RSpec.describe "Account / Reset password", :web, :db, :mail do
 
     expect(page).to have_flash_message "Your password has been reset", type: :notice
 
-    visit "/sign-out"
-    click_on "Sign out"
-
     visit "/sign-in"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "new-password"
-    click_on "Sign in"
+    within("main") { click_on "Sign in" }
 
     expect(page).to have_flash_message "You have been signed in", type: :notice
   end

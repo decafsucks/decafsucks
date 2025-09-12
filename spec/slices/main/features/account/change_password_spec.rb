@@ -13,7 +13,7 @@ RSpec.describe "Account / Change password", :web, :db, :mail do
     visit "/sign-in"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "password123"
-    click_on "Sign in"
+    within("main") { click_on "Sign in" }
 
     visit "/account/change-password"
     fill_in "Password", with: "password123"
@@ -29,11 +29,11 @@ RSpec.describe "Account / Change password", :web, :db, :mail do
     visit "/sign-in"
     fill_in "Email", with: "jane@example.com"
     fill_in "Password", with: "password123"
-    click_on "Sign in"
+    within("main") { click_on "Sign in" }
     expect(page).to have_content "invalid password"
 
     fill_in "Password", with: "new-password"
-    click_on "Sign in"
+    within("main") { click_on "Sign in" }
 
     expect(page).to have_flash_message "You have been signed in", type: :notice
   end
