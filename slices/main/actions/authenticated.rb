@@ -3,6 +3,7 @@
 
 module Main
   module Actions
+    # Action class that requires a signed in user.
     class Authenticated < Main::Action
       before :require_authentication
 
@@ -36,9 +37,9 @@ module Main
         if halted
           code, headers, body = *halted
 
-          # Because we're catching Roda's halt and not allowing it to finalize its request
-          # internally, we need to take any flash messages issued from within Roda and place them in
-          # our own flash object, so they can be made available for the next request.
+          # Because we're catching Roda's halt and not allowing it to finalize its own request, we
+          # need to take any flash messages it created and put them in our own flash object, so they
+          # can become available for displaying on the next request.
           rodauth.flash.next.each { |k, v| response.flash[k] = v }
 
           # Handle the redirect ourselves
