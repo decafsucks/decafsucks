@@ -36,9 +36,9 @@ module Main
         if halted
           code, headers, body = *halted
 
-          # Because we're catching Rodauth's halt and issuing our own redirect, we're preparing our
-          # own Rack response object rather than using Rodauth's. To make sure flash messages are
-          # preserved, copy them over explicitly.
+          # Because we're catching Roda's halt and not allowing it to finalize its request
+          # internally, we need to take any flash messages issued from within Roda and place them in
+          # our own flash object, so they can be made available for the next request.
           rodauth.flash.next.each { |k, v| response.flash[k] = v }
 
           # Handle the redirect ourselves
