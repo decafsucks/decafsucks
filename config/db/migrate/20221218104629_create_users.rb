@@ -4,8 +4,9 @@ ROM::SQL.migration do
   change do
     create_table :users do
       primary_key :id
-      column :email, :text, null: false
+      foreign_key :account_id
       column :name, :text, null: false
+
       column :reviews_count, :integer, null: false, default: 0
       column :created_at, :timestamp, null: false, default: Sequel.lit("(now() at time zone 'utc')")
     end

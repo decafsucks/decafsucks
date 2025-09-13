@@ -23,6 +23,13 @@ gem "pg"
 gem "dry-struct"
 gem "faraday"
 
+# Authentication
+gem "rodauth"
+gem "bcrypt"
+
+# Mail
+gem "mail"
+
 group :cli, :development, :test do
   # Hanami web server reloading on file changes
   gem "hanami-reloader", "~> 2.2.0"

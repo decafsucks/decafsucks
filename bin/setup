@@ -14,6 +14,7 @@ def setup
 
   header "💾 Preparing databases"
   system! "bundle exec hanami db prepare"
+  system! "bundle exec hanami db seed -e test" # FIXME: this should be run by `db prepare`
 
   header "⭐️ Five stars, everything is fantastic!"
   puts "For commonly needed commands, run:\n"

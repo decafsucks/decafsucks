@@ -4,7 +4,51 @@
     <%= stylesheet_tag "app" %>
   </head>
   <body>
-    <%= yield %>
+    <% if flash[:alert] %>
+      <div class="flash flash-alert">
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="flash flash-notice">
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end %>
+
+    <h1>
+      <a href="/">
+        <h1 class="text-teal-600 text-2xl mb-4">Decaf Sucks</h1>
+      </a>
+    </h1>
+
+    <div>
+      <% if signed_in? %>
+        <div>
+          Signed in: <%= current_user.name %>
+          /
+          <a href="/account">
+            Your account
+          </a>
+          /
+          <form method="post" action="/sign-out" class="rodauth" role="form" style="display:inline-block;">
+            <%== rodauth.csrf_tag("/sign-out") %>
+            <input type="submit" class="btn btn-primary" value="Sign out">
+          </form>
+        </div>
+      <% else %>
+        <p>
+          <a href="/sign-in">
+            Sign in
+          </a>
+        </p>
+      <% end %>
+    </div>
+
+    <br><hr><br>
+
+    <main>
+      <%= yield %>
+    </main>
     <%= javascript_tag "app" %>
   </body>
 </html>

@@ -2,10 +2,10 @@
 
 module Main
   module Relations
-    class Users < Main::DB::Relation
-      schema :users, infer: true do
+    class Accounts < Main::DB::Relation
+      schema :accounts, infer: true do
         associations do
-          belongs_to :account
+          has_one :user
         end
       end
     end
