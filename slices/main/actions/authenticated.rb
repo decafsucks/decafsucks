@@ -12,7 +12,7 @@ module Main
       def require_authentication(request, response)
         rodauth = request.env["rodauth"]
 
-        handle_rodauth_redirects(rodauth, response) { rodauth.require_account }
+        handle_rodauth_redirect(rodauth, response) { rodauth.require_account }
 
         response[:current_account_id] = rodauth.account_id
       end
@@ -29,7 +29,7 @@ module Main
       # expected structure for Hanami actions, and then re-throwing it.
       #
       # (Later on we'll shift this code into a rodauth-hanami gem or similar.)
-      def handle_rodauth_redirects(rodauth, response)
+      def handle_rodauth_redirect(rodauth, response)
         halted = catch :halt do
           yield
         end
