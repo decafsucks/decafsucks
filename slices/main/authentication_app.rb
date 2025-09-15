@@ -54,6 +54,7 @@ module Main
       # Configure redirects for signing in and out
       login_return_to_requested_location? true
       logout_redirect "/"
+      already_logged_in { redirect "/" }
 
       # When signing up, save a user `name` into a new `users` record and associate it with the new
       # account.
@@ -85,8 +86,6 @@ module Main
       verify_login_change_route "verify-email-change"
 
       flash_error_key :alert
-
-      already_logged_in { redirect "/" }
 
       # Without this, Roda's render plugin tries to find a "views/layout.erb" in the root of this
       # app (which obviously doesn't exist) and raises an Errno::ENOENT error.
