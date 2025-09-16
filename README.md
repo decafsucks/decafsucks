@@ -21,8 +21,16 @@ Run Postgres via Docker Compose:
 docker compose up -d
 ```
 
-Then setup the app:
+Setup the app:
 
 ```
 bin/setup
 ```
+
+Then run the app:
+
+```
+bin/dev
+```
+
+Open [localhost:2300](http://localhost:2300) to see the app, and [localhost:8025](http://localhost:8025) to inspect emails.
