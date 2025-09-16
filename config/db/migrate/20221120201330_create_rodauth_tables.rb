@@ -3,6 +3,8 @@
 # Adapted from https://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html
 ROM::SQL.migration do
   up do
+    run "CREATE EXTENSION IF NOT EXISTS citext"
+
     extension :date_arithmetic
 
     # Used by the account verification and close account features
@@ -66,5 +68,7 @@ ROM::SQL.migration do
       :accounts,
       :account_statuses
     )
+
+    run "DROP EXTENSION IF EXISTS citext"
   end
 end
