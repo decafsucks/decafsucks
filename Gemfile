@@ -3,13 +3,14 @@
 source "https://rubygems.org"
 
 # App framework
-gem "hanami", "~> 2.2.0"
-gem "hanami-assets", "~> 2.2.0"
-gem "hanami-cli", "~> 2.2.0"
-gem "hanami-controller", "~> 2.2.0"
-gem "hanami-db", "~> 2.2.0"
-gem "hanami-router", "~> 2.2.0"
-gem "hanami-view", "~> 2.2.0"
+gem "hanami", github: "hanami/hanami", branch: "main"
+gem "hanami-cli", github: "hanami/cli", branch: "main"
+gem "hanami-utils", github: "hanami/utils", branch: "main"
+gem "hanami-assets", github: "hanami/assets", branch: "main"
+gem "hanami-controller", github: "hanami/controller", branch: "main"
+gem "hanami-db", github: "hanami/db", branch: "main"
+gem "hanami-router", github: "hanami/router", branch: "main"
+gem "hanami-view", github: "hanami/view", branch: "main"
 
 # Framework support
 gem "dry-types"
@@ -32,15 +33,15 @@ gem "mail"
 
 group :cli, :development, :test do
   # Hanami web server reloading on file changes
-  gem "hanami-reloader", "~> 2.2.0"
+  gem "hanami-reloader", github: "hanami/reloader", branch: "main"
 
   # Hanami testing helpers
-  gem "hanami-rspec", "~> 2.2.0"
+  gem "hanami-rspec", github: "hanami/rspec", branch: "main"
 end
 
 group :development do
   # Friendly developer errors
-  gem "hanami-webconsole", "~> 2.2.0"
+  gem "hanami-webconsole", github: "hanami/webconsole", branch: "main"
 
   gem "standard"
 end
