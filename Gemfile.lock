@@ -129,7 +129,7 @@ GIT
       binding_of_caller (~> 1.0)
 
 GEM
-  remote: https://rubygems.org/
+  remote: https://gem.coop/
   specs:
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
