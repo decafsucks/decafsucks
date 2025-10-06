@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source "https://gem.coop"
 
 # App framework
 gem "hanami", github: "hanami/hanami", branch: "main"
