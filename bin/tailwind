@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+#MISE description="Compile your Tailwind CSS"
+# frozen_string_literal: true
+
+def compile(watch: false)
+  args = %w[npx tailwindcss --input app/assets/css/tailwind.css --output app/assets/builds/tailwind.css --minify]
+  args << "--watch" if watch
+  system(*args)
+end
+
+if %w[watch --watch -w].include?(ARGV[0])
+  compile(watch: true)
+else
+  compile
+end
