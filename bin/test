@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+#MISE description="Run unit tests"
+#MISE alias=["t"]
+bundle exec rspec

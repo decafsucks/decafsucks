@@ -1,3 +1,14 @@
+[env]
+_.file = [".env"]
+
+[task_config]
+includes = ["bin"]
+
+[tasks."tailwind:watch"]
+description = "Watch and compile your Tailwind CSS on file changes"
+depends=["tailwind --watch"]
+
 [tools]
+"gem:foreman" = "latest"
 node = "22.16.0"
 ruby = "3.4.4"
