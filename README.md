@@ -17,20 +17,16 @@ mise install
 
 Run Postgres via Docker Compose:
 
-```shell
-docker compose up -d
-```
-
 Setup the app:
 
 ```
-bin/setup
+mise run dev:setup
 ```
 
 Then run the app:
 
 ```
-bin/dev
+mise run dev:start
 ```
 
 Open [localhost:2300](http://localhost:2300) to see the app, and [localhost:8025](http://localhost:8025) to inspect emails.

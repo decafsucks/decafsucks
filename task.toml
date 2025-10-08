@@ -1,0 +1,37 @@
+["dev:setup"]
+description = "Setup the development environment"
+depends = ["dev:setup:**"]
+
+["dev:setup:bundler"]
+hide = true
+run = """
+gem install bundler --conservative
+bundle check || bundle install
+"""
+
+["dev:setup:db"]
+hide = true
+run = """
+docker-compose up -d
+until docker exec postgres pg_isready -U postgres > /dev/null 2>&1; do sleep 1; done
+bundle exec hanami db prepare
+bundle exec hanami db seed -e test
+docker-compose down --remove-orphans
+"""
+
+["dev:start"]
+description = "Start the development environment"
+run = "docker-compose up -d && foreman start -f Procfile.dev"
+
+["tailwind:compile"]
+description = "Compile your Tailwind CSS"
+run = "npx talwindcss --input app/assets/css/tailwind.css --output app/assets/builds/tailwind.css --minify"
+
+["tailwind:watch"]
+description = "Watch and compile your Tailwind CSS on file changes"
+depends = ["tailwind:compile --watch"]
+
+[test]
+description = "Run unit tests"
+alias = ["t"]
+run = "bundle exec rspec"
