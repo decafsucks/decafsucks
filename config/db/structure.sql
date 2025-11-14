@@ -2,8 +2,6 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.6
--- Dumped by pg_dump version 17.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -370,7 +368,6 @@ ALTER TABLE ONLY public.reviews
 --
 -- PostgreSQL database dump complete
 --
-
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES
