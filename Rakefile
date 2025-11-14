@@ -2,6 +2,9 @@
 
 require "hanami/rake_tasks"
 
+# Add your custom rake tasks to the lib/tasks directory
+Rake.add_rakelib "lib/tasks"
+
 namespace :tailwind do
   desc "Compile your Tailwind CSS"
   task :compile do

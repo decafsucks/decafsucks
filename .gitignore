@@ -8,7 +8,9 @@
 /app/assets/builds
 
 # Compiled assets
-/public
+public/*
+!public/404.html
+!public/500.html
 
 # Data for docker-run services
 /data
