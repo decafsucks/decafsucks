@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+#MISE description="Start the development environment"
 
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."

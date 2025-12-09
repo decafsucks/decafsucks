@@ -22,6 +22,10 @@ AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 3.2
 
+Layout/LeadingCommentSpace:
+  Exclude:
+    - bin/**/*
+
 Style/GlobalVars:
   Exclude:
     - bin/setup
