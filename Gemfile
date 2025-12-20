@@ -62,5 +62,5 @@ group :test do
   gem "rack-test"
 
   # Integration testing
-  gem "vcr"
+  gem "vcr", github: "vcr/vcr"
 end

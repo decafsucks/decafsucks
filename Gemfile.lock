@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/assets.git
-  revision: 482969c636a0194a913cc0caeff20ce48e5d55fb
+  revision: 2d06576c8db0e9357b5562c95f56b0083939e814
   branch: main
   specs:
     hanami-assets (2.3.0)
@@ -8,11 +8,11 @@ GIT
 
 GIT
   remote: https://github.com/hanami/cli.git
-  revision: 39478bc57045e5b8536a5734d9685805c683c49b
+  revision: 20b927f744316788dbc4b1640e68e0a060fa0020
   branch: main
   specs:
-    hanami-cli (2.3.1)
-      bundler (~> 2.1)
+    hanami-cli (2.3.2)
+      bundler (>= 2.1)
       dry-cli (~> 1.0, >= 1.1.0)
       dry-files (~> 1.0, >= 1.0.2, < 2)
       dry-inflector (~> 1.0, < 2)
@@ -23,19 +23,19 @@ GIT
 
 GIT
   remote: https://github.com/hanami/controller.git
-  revision: e1618a91d399de7b3dc7d3cf2c8deb53c2c4c81a
+  revision: 21e06b53cff5f87c895148292df88b8dd6aa13c5
   branch: main
   specs:
-    hanami-controller (2.3.0)
+    hanami-controller (2.3.1)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0)
       hanami-utils (~> 2.3.0)
-      rack (>= 2.1)
+      rack (>= 2.2.16)
       zeitwerk (~> 2.6)
 
 GIT
   remote: https://github.com/hanami/db.git
-  revision: c836edd49abbb6509aabb2efccbf58932884be83
+  revision: 3e8e5c0e10399e6e308622d95c6491d80ca7d47e
   branch: main
   specs:
     hanami-db (2.3.0)
@@ -45,11 +45,11 @@ GIT
 
 GIT
   remote: https://github.com/hanami/hanami.git
-  revision: 0d83bb9a781703e469336d9168b796df38e19d19
+  revision: 489411c36f0a9fcc0745f120e0f40f270749b28e
   branch: main
   specs:
-    hanami (2.3.1)
-      bundler (>= 1.16, < 3)
+    hanami (2.3.2)
+      bundler (>= 2.0)
       dry-configurable (~> 1.0, >= 1.2.0, < 2)
       dry-core (~> 1.0, < 2)
       dry-inflector (~> 1.0, >= 1.1.0, < 2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/reloader.git
-  revision: e6da2e5892b4106ee821d3e70fb6f85f7628dcf7
+  revision: 569c28163548ed0f2f99310a6993c4c65fc06954
   branch: main
   specs:
     hanami-reloader (2.3.0)
@@ -75,18 +75,18 @@ GIT
 
 GIT
   remote: https://github.com/hanami/router.git
-  revision: e5628a4b99d09e5e7038a4c01a20ed7ddc9031eb
+  revision: ef843f9fc72d9ef8b1b0aaf1cb6112a4fd08d108
   branch: main
   specs:
-    hanami-router (2.3.0)
+    hanami-router (2.3.1)
       csv (~> 3.3)
       mustermann (~> 3.0)
       mustermann-contrib (~> 3.0)
-      rack (>= 2.0)
+      rack (>= 2.2.16)
 
 GIT
   remote: https://github.com/hanami/rspec.git
-  revision: eece556ba5146dd0e6535283d01dd5c576335550
+  revision: 0af65a24078d07ad951ac6b0e3f27212e913e961
   branch: main
   specs:
     hanami-rspec (2.3.0)
@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://github.com/hanami/utils.git
-  revision: efa41ed4cc02318e462f675eaacc584d3bc12c3c
+  revision: 3ecbd147baa125f716802af53d36a670f317c62f
   branch: main
   specs:
     hanami-utils (2.3.0)
@@ -108,10 +108,10 @@ GIT
 
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 74e3892855354713e524b0177aca8a233f6fbc0a
+  revision: 590d7386620ac29d64c7225590ff3a26bb54b167
   branch: main
   specs:
-    hanami-view (2.3.0)
+    hanami-view (2.3.1)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
@@ -121,18 +121,24 @@ GIT
 
 GIT
   remote: https://github.com/hanami/webconsole.git
-  revision: 0844dfeb1af1580f4c6bc2966538364fa38c62fe
+  revision: e1a68b22a824fae063522c9aab4cf156e56bcef6
   branch: main
   specs:
-    hanami-webconsole (2.3.0)
+    hanami-webconsole (2.3.1)
       better_errors (~> 2.10, >= 2.10.1)
       binding_of_caller (~> 1.0)
+
+GIT
+  remote: https://github.com/vcr/vcr.git
+  revision: 81b06bf2e6aae57ddc54b3f46b9d4070306f6cd2
+  specs:
+    vcr (6.3.1)
 
 GEM
   remote: https://gem.coop/
   specs:
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.20)
@@ -155,16 +161,16 @@ GEM
     childprocess (5.1.0)
       logger (~> 1.5)
     coderay (1.1.3)
-    concurrent-ruby (1.3.5)
+    concurrent-ruby (1.3.6)
     csv (3.3.5)
     database_cleaner-core (2.0.1)
     database_cleaner-sequel (2.0.2)
       database_cleaner-core (~> 2.0.0)
       sequel
-    date (3.5.0)
+    date (3.5.1)
     debug_inspector (1.2.0)
     diff-lcs (1.6.2)
-    dotenv (3.1.8)
+    dotenv (3.2.0)
     dry-auto_inject (1.1.0)
       dry-core (~> 1.1)
       zeitwerk (~> 2.6)
@@ -182,7 +188,8 @@ GEM
     dry-files (1.1.0)
     dry-inflector (1.2.0)
     dry-initializer (3.2.0)
-    dry-logger (1.2.0)
+    dry-logger (1.2.1)
+      logger
     dry-logic (1.6.0)
       bigdecimal
       concurrent-ruby (~> 1.0)
@@ -197,12 +204,13 @@ GEM
       dry-types (~> 1.8, >= 1.8.2)
       ice_nine (~> 0.11)
       zeitwerk (~> 2.6)
-    dry-system (1.2.4)
+    dry-system (1.2.5)
       dry-auto_inject (~> 1.1)
       dry-configurable (~> 1.3)
       dry-core (~> 1.1)
       dry-inflector (~> 1.1)
-    dry-transformer (1.0.1)
+    dry-transformer (1.1.0)
+      bigdecimal
       zeitwerk (~> 2.6)
     dry-types (1.8.3)
       bigdecimal (~> 3.0)
@@ -211,9 +219,9 @@ GEM
       dry-inflector (~> 1.0)
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
-    erb (6.0.0)
+    erb (6.0.1)
     erubi (1.13.1)
-    faker (3.5.2)
+    faker (3.5.3)
       i18n (>= 1.8.11, < 2)
     faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
@@ -221,8 +229,7 @@ GEM
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
-    ffi (1.17.2-arm64-darwin)
-    ffi (1.17.2-x86_64-linux-gnu)
+    ffi (1.17.2)
     formatador (1.2.3)
       reline
     guard (2.19.1)
@@ -245,12 +252,12 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    io-console (0.8.1)
-    irb (1.15.3)
+    io-console (0.8.2)
+    irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
-    json (2.16.0)
+    json (2.18.0)
     language_server-protocol (3.17.0.5)
     launchy (3.1.1)
       addressable (~> 2.8)
@@ -271,15 +278,16 @@ GEM
     matrix (0.4.3)
     method_source (1.1.0)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     mustermann (3.0.4)
       ruby2_keywords (~> 0.0.1)
     mustermann-contrib (3.0.4)
       hansi (~> 0.2.0)
       mustermann (= 3.0.4)
     nenv (0.3.0)
-    net-http (0.8.0)
+    net-http (0.9.1)
       uri (>= 0.11.1)
-    net-imap (0.5.12)
+    net-imap (0.6.2)
       date
       net-protocol
     net-pop (0.1.2)
@@ -289,9 +297,8 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.18.10-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.18.10-x86_64-linux-gnu)
+    nokogiri (1.18.10)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     notiffany (0.1.3)
       nenv (~> 0.1)
@@ -301,19 +308,18 @@ GEM
     parser (3.3.10.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.2-arm64-darwin)
-    pg (1.6.2-x86_64-linux)
+    pg (1.6.2)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.6.0)
+    prism (1.7.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
-    psych (5.2.6)
+    psych (5.3.1)
       date
       stringio
-    public_suffix (6.0.2)
+    public_suffix (7.0.0)
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -323,29 +329,29 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.2.0)
       rack (>= 1.3)
-    rackup (2.2.1)
+    rackup (2.3.1)
       rack (>= 3)
     rainbow (3.1.1)
     rake (13.3.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
-    rdoc (6.15.1)
+    rdoc (7.0.1)
       erb
       psych (>= 4.0.0)
       tsort
     regexp_parser (2.11.3)
     reline (0.6.3)
       io-console (~> 0.5)
-    roda (3.98.0)
+    roda (3.99.0)
       rack
-    rodauth (2.41.0)
+    rodauth (2.42.0)
       roda (>= 2.6.0)
       sequel (>= 4)
-    rom (5.4.2)
+    rom (5.4.3)
       rom-changeset (~> 5.4)
       rom-core (~> 5.4)
-      rom-repository (~> 5.4, >= 5.4.2)
+      rom-repository (~> 5.4, >= 5.4.3)
     rom-changeset (5.4.0)
       dry-core (~> 1.0)
       rom-core (~> 5.4)
@@ -365,7 +371,7 @@ GEM
       dry-struct (~> 1.7)
       faker (>= 2.0, < 4)
       rom-core (~> 5.4)
-    rom-repository (5.4.2)
+    rom-repository (5.4.3)
       dry-core (~> 1.0)
       dry-initializer (~> 3.2)
       rom-core (~> 5.4)
@@ -388,7 +394,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-support (3.13.6)
-    rubocop (1.80.2)
+    rubocop (1.81.7)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -396,49 +402,47 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.46.0, < 2.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.48.0)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
-    rubocop-performance (1.25.0)
+    rubocop-performance (1.26.1)
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
-    sequel (5.98.0)
+    sequel (5.99.0)
       bigdecimal
     shellany (0.0.1)
-    standard (1.51.1)
+    standard (1.52.0)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
-      rubocop (~> 1.80.2)
+      rubocop (~> 1.81.7)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.8)
     standard-custom (1.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.50)
-    standard-performance (1.8.0)
+    standard-performance (1.9.0)
       lint_roller (~> 1.1)
-      rubocop-performance (~> 1.25.0)
-    stringio (3.1.8)
+      rubocop-performance (~> 1.26.0)
+    stringio (3.2.0)
     temple (0.10.4)
     thor (1.4.0)
     tilt (2.6.1)
-    timeout (0.4.4)
+    timeout (0.6.0)
     transproc (1.1.1)
     tsort (0.2.0)
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
-    unicode-emoji (4.1.0)
+    unicode-emoji (4.2.0)
     uri (1.1.1)
-    vcr (6.3.1)
-      base64
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.3)
+    zeitwerk (2.7.4)
 
 PLATFORMS
   arm64-darwin-21
@@ -474,7 +478,7 @@ DEPENDENCIES
   rodauth
   rom-factory
   standard
-  vcr
+  vcr!
 
 BUNDLED WITH
-   2.5.18
+  4.0.2
