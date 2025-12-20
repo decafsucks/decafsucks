@@ -10,7 +10,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.4.4
+          ruby-version: 4.0.0-preview3
           bundler-cache: true
       - name: Rubocop
         run: bundle exec rubocop
@@ -29,7 +29,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         name: Set up Ruby
         with:
-          ruby-version: 3.4.4
+          ruby-version: 4.0.0-preview3
           bundler-cache: true
       - uses: actions/setup-node@v4
         name: Set up Node
