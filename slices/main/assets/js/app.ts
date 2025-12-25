@@ -1,4 +1,8 @@
 import "@app/builds/tailwind.css";
 import "@main/css/app.css";
+import "leaflet/dist/leaflet.css";
+import { initCafeMap } from "./cafe-map";
 
-console.log("Hello from Decaf Sucks");
+document.addEventListener("DOMContentLoaded", () => {
+  initCafeMap();
+});
