@@ -1,3 +1,4 @@
+import type { ViewFn } from "@icelab/defo";
 import * as L from "leaflet";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -10,32 +11,52 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-export function initCafeMap() {
-  const mapElement = document.getElementById("cafe-map");
+type Props = {
+  lat: number;
+  lng: number;
+  name: string;
+  zoom?: number;
+};
 
-  if (!mapElement) {
-    return;
-  }
+/**
+ * cafeMap
+ *
+ * Initialize a Leaflet map for a cafe location
+ *
+ * @example
+ * <div data-defo-cafe-map='{
+ *   "lat": 37.7749,
+ *   "lng": -122.4194,
+ *   "name": "Blue Bottle Coffee",
+ *   "zoom": 15
+ * }'></div>
+ */
+export const cafeMapViewFn: ViewFn<Props> = (
+  node: HTMLElement,
+  { lat, lng, name, zoom = 15 }: Props,
+) => {
+  // Initialize the map
+  const map = L.map(node).setView([lat, lng], zoom);
 
-  // Set up map
-  const lat = parseFloat(mapElement.dataset.lat || "0");
-  const lng = parseFloat(mapElement.dataset.lng || "0");
-  const name = mapElement.dataset.name || "Cafe";
-  const map = L.map("cafe-map", {
-    attributionControl: false,
-  }).setView([lat, lng], 15);
-
-  // Use OpenStreetMap tiles
+  // Add OpenStreetMap tiles
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  // Show marker with cafe details in popup
+  // Create popup content with cafe details
   const popupContent = `<div>
     <h3>${name}</h3>
     <p>Latitude: ${lat}</p>
     <p>Longitude: ${lng}</p>
   </div>`;
+
+  // Add marker with popup
   L.marker([lat, lng]).addTo(map).bindPopup(popupContent);
-}
+
+  return {
+    destroy: () => {
+      map.remove();
+    },
+  };
+};

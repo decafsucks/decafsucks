@@ -1,8 +1,7 @@
 import "@app/builds/tailwind.css";
 import "@main/css/app.css";
 import "leaflet/dist/leaflet.css";
-import { initCafeMap } from "./cafe-map";
+import defo from "@icelab/defo";
+import { views } from "./views";
 
-document.addEventListener("DOMContentLoaded", () => {
-  initCafeMap();
-});
+defo({ views });

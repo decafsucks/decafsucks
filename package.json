@@ -6,6 +6,7 @@
     "assets": "node config/assets.js"
   },
   "dependencies": {
+    "@icelab/defo": "^1.0.1",
     "hanami-assets": "^2.1.1",
     "leaflet": "^1.9.4",
     "typescript": "^5.2.2"

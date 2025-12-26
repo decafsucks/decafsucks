@@ -1,10 +1,7 @@
 <div class="max-w-4xl mx-auto p-4">
   <h1 class="text-3xl font-bold mb-6"><%= cafe.name %></h1>
 
-  <div id="cafe-map"
-       data-lat="<%= cafe.lat %>"
-       data-lng="<%= cafe.lng %>"
-       data-name="<%= cafe.name %>"
+  <div data-defo-cafe-map='{"lat": <%= cafe.lat %>, "lng": <%= cafe.lng %>, "name": "<%= cafe.name %>"}'
        class="h-96 w-full rounded-lg shadow-lg mb-6">
   </div>
 
