@@ -12,16 +12,6 @@ await assets.run({
     // Use the `args.watch` boolean as a condition to apply diffierent options
     // when running `hanami assets watch` vs `hanami assets compile`.
 
-    // Configure loader to handle image files
-    esbuildOptions.loader = {
-      ...esbuildOptions.loader,
-      ".png": "file",
-      ".jpg": "file",
-      ".jpeg": "file",
-      ".svg": "file",
-      ".gif": "file",
-    };
-
     // Set public path to ensure assets use absolute URLs
     esbuildOptions.publicPath = "/assets/_main";
 
