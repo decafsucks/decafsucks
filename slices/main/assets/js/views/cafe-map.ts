@@ -18,19 +18,6 @@ type Props = {
   zoom?: number;
 };
 
-/**
- * cafeMap
- *
- * Initialize a Leaflet map for a cafe location
- *
- * @example
- * <div data-defo-cafe-map='{
- *   "lat": 37.7749,
- *   "lng": -122.4194,
- *   "name": "Blue Bottle Coffee",
- *   "zoom": 15
- * }'></div>
- */
 export const cafeMapViewFn: ViewFn<Props> = (
   node: HTMLElement,
   { lat, lng, name, zoom = 15 }: Props,
