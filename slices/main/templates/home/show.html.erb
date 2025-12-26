@@ -2,6 +2,6 @@
 
 <% cafes.each do |cafe| %>
   <div>
-    <p><%= cafe.name %></p>
+    <%= link_to cafe.name, routes.path(:cafe, id: cafe.id) %>
   </div>
 <% end %>
