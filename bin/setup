@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+#MISE description="Setup the development environment"
 # frozen_string_literal: true
 
 require "pathname"
