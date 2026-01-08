@@ -15,6 +15,7 @@ gem "hanami-view", github: "hanami/view", branch: "main"
 # Framework support
 gem "dry-types"
 gem "puma"
+gem "rack", "~> 2.0"
 gem "rake"
 
 # Database
@@ -62,5 +63,5 @@ group :test do
   gem "rack-test"
 
   # Integration testing
-  gem "vcr"
+  gem "vcr", github: "vcr/vcr"
 end
