@@ -3,6 +3,7 @@
 --
 
 
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -368,6 +369,8 @@ ALTER TABLE ONLY public.reviews
 --
 -- PostgreSQL database dump complete
 --
+
+
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES

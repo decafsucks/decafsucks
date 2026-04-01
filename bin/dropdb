@@ -1,0 +1,18 @@
+#!/bin/sh
+set -euo pipefail
+
+# Delegates to dropdb inside the postgres Docker container.
+#
+# Expects the "postgres" service from docker-compose.yml to be running.
+
+# Allocate a TTY for interactive use (e.g. a human running psql), but disable it with --no-tty
+# otherwise, so piped data (e.g. from the `hanami db` commands) isn't corrupted by terminal codes.
+TTY_FLAG="--no-tty"
+if [ -t 0 ] && [ -t 1 ]; then
+  TTY_FLAG=""
+fi
+
+exec docker compose exec $TTY_FLAG \
+  -e PGUSER="$DECAFSUCKS_POSTGRES_CLI_USER" \
+  -e PGPASSWORD="$DECAFSUCKS_POSTGRES_CLI_PASSWORD" \
+  postgres dropdb "$@"

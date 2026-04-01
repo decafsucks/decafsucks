@@ -1,3 +1,13 @@
+[settings]
+# Add to the very beginning of $PATH, ensuring our binstubs take precedence
+activate_aggressive = true
+
+[env]
+_.path = ["bin"]
+# Used from our Postgres binstubs, matching the values set in docker-compose.yml
+DECAFSUCKS_POSTGRES_CLI_USER = "postgres"
+DECAFSUCKS_POSTGRES_CLI_PASSWORD = "postgres"
+
 [tools]
 node = "22.16.0"
 ruby = "3.4.4"
