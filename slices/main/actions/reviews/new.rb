@@ -5,6 +5,7 @@ module Main
     module Reviews
       class New < Authenticated
         def handle(request, response)
+          response.render(view)
         end
       end
     end

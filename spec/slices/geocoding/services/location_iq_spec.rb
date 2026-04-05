@@ -11,8 +11,8 @@ RSpec.describe Geocoding::Services::LocationIQ do
     expect(results.length).to eq 8
     expect(results.first).to have_attributes(
       display_name: "Sigulda, Siguldas novads, LV-2150, Latvia",
-      lat: "57.1540561",
-      lng: "24.8567141"
+      lat: BigDecimal("57.1540561"),
+      lng: BigDecimal("24.8567141")
     )
   end
 end

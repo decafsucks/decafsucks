@@ -30,7 +30,7 @@ RSpec.configure do |config|
     end
   end
 
-  config.before :each, :db do |example|
+  config.prepend_before :each, :db do |example|
     strategy = example.metadata[:js] ? :truncation : :transaction
 
     all_databases.call.each do |db|

@@ -5,5 +5,6 @@ require "hanami/action"
 
 module Decafsucks
   class Action < Hanami::Action
+    include Dry::Monads[:result]
   end
 end
