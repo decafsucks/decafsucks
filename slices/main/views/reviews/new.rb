@@ -4,6 +4,7 @@ module Main
   module Views
     module Reviews
       class New < Main::View
+        expose :errors, default: {}
       end
     end
   end

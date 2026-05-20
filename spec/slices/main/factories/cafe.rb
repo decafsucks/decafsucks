@@ -2,7 +2,7 @@
 
 Test::Factories::Main.define(:cafe) do |f|
   f.name { "#{fake(:coffee, :blend_name)} Cafe" }
-  f.name_dmetaphone { |name| "cafe" } # TODO: add real double metaphone support
+  f.name_dmetaphone { |name| Main::Cafes::Dmetaphone.of(name) }
   f.address { fake(:address, :full_address) }
   f.lat { fake(:address, :latitude) }
   f.lng { fake(:address, :longitude) }

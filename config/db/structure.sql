@@ -311,6 +311,13 @@ CREATE UNIQUE INDEX accounts_email_index ON public.accounts USING btree (email) 
 
 
 --
+-- Name: cafes_name_dmetaphone_lat_lng_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX cafes_name_dmetaphone_lat_lng_unique ON public.cafes USING btree (name_dmetaphone, round(lat, 4), round(lng, 4));
+
+
+--
 -- Name: account_login_change_keys account_login_change_keys_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 

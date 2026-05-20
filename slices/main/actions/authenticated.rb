@@ -5,6 +5,22 @@ module Main
   module Actions
     # Action class that requires a signed in user.
     class Authenticated < Main::Action
+      # Key for authentication context in the current request.
+      #
+      # @see #actor
+      ACTOR_REQUEST_KEY = "decafsucks.main.actor"
+
+      # Authentication context for the current request.
+      #
+      # @example
+      #   actor(request).user         # current user
+      #   actor(request).account_id   # rodauth account id
+      #
+      # @see #actor
+      Actor = Data.define(:user, :account_id)
+
+      include Deps["repos.user_repo"]
+
       before :require_authentication
 
       private
@@ -14,7 +30,20 @@ module Main
 
         handle_rodauth_redirect(rodauth, response) { rodauth.require_account }
 
-        response[:current_account_id] = rodauth.account_id
+        request.env[ACTOR_REQUEST_KEY] = Actor.new(
+          account_id: rodauth.account_id,
+          user: user_repo.get_for_account(rodauth.account_id)
+        )
+      end
+
+      # Returns the {Actor} representing the current user. Use this to get the current user.
+      #
+      # @example
+      #   actor(request).user
+      #
+      # @see #require_authentication
+      def actor(request)
+        request.env[ACTOR_REQUEST_KEY]
       end
 
       # Converts a Rodauth-initiated redirect into one that works for Hanami actions.

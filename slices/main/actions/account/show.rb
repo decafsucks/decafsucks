@@ -7,7 +7,7 @@ module Main
         def handle(request, response)
           response.render(
             view,
-            account_id: response[:current_account_id]
+            account_id: actor(request).account_id
           )
         end
       end

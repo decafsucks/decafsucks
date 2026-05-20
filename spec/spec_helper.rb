@@ -8,3 +8,5 @@ require "hanami/prepare"
 
 require_relative "support/rspec"
 require_relative "support/feature_loader"
+
+require_relative "support/monads"
