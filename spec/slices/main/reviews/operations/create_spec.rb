@@ -15,6 +15,7 @@ RSpec.describe Main::Reviews::Operations::Create, :db, :container_stubs do
   }
 
   let(:cafes) { Main::Slice["relations.cafes"] }
+  let(:reviews) { Main::Slice["relations.reviews"] }
 
   before do
     Main::Slice.container.stub("geocoding.search", geocoder)
@@ -33,17 +34,20 @@ RSpec.describe Main::Reviews::Operations::Create, :db, :container_stubs do
       author_id: author.id
     )
 
-    expect(result).to be_success { |review|
-      expect(review).to have_attributes(
+    expect(result).to be_success
+    expect(cafes.to_a).to contain_exactly(
+      a_hash_including(
+        name: "Seven Seeds",
+        address: "123 Smith St, Melbourne VIC 3000, Australia"
+      )
+    )
+    expect(reviews.to_a).to contain_exactly(
+      a_hash_including(
         author_id: author.id,
         rating: 8,
         body: "Excellent single origin pour over."
       )
-      expect(cafes.by_pk(review.cafe_id).one!).to include(
-        name: "Seven Seeds",
-        address: "123 Smith St, Melbourne VIC 3000, Australia"
-      )
-    }
+    )
   end
 
   it "creates a review attached to an existing nearby cafe" do
@@ -60,14 +64,15 @@ RSpec.describe Main::Reviews::Operations::Create, :db, :container_stubs do
       author_id: author.id
     )
 
-    expect(result).to be_success { |review|
-      expect(review).to have_attributes(
-        cafe_id: existing.id,
+    expect(result).to be_success
+    expect(reviews.to_a).to contain_exactly(
+      a_hash_including(
         author_id: author.id,
+        cafe_id: existing.id,
         rating: 8,
         body: "Excellent single origin pour over."
       )
-    }
+    )
     expect(cafes.count).to eq 1
   end
 

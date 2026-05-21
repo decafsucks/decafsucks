@@ -7,7 +7,9 @@ module Decafsucks
 
       root to: "home.show"
 
-      resources :cafes, only: %i[show]
+      resources :cafes, only: %i[show] do
+        resources :reviews, only: %i[new create]
+      end
       resources :reviews, only: %i[new create]
       resource :account, only: %i[show]
     end
