@@ -1,0 +1,29 @@
+<h1>Write a Review for <%= cafe.name %></h1>
+
+<% if (base = Array(errors[:base])).any? %>
+  <ul>
+    <% base.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(routes.path(:cafe_reviews, cafe_id: cafe.id)) do |f| %>
+  <div>
+    <%= f.label "Rating (1-10)", for: "rating" %>
+    <%= f.number_field "rating", min: 1, max: 10 %>
+    <% Array(errors[:rating]).each do |msg| %>
+      <span><%= msg %></span>
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.label "Review", for: "body" %>
+    <%= f.text_area "body", rows: 6 %>
+    <% Array(errors[:body]).each do |msg| %>
+      <span><%= msg %></span>
+    <% end %>
+  </div>
+
+  <%= f.submit "Submit review" %>
+<% end %>

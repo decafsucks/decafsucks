@@ -6,4 +6,8 @@
     data-defo-cafe-map='{"lat": <%= cafe.lat %>, "lng": <%= cafe.lng %>, "name": "<%= cafe.name %>"}'
     class="h-96 w-full rounded-lg shadow-lg mb-6">
   </div>
+
+  <p>
+    <a href="<%= routes.path(:new_cafe_review, cafe_id: cafe.id) %>">Write a review</a>
+  </p>
 </div>
