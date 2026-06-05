@@ -1,13 +1,17 @@
 services:
   postgres:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
       - "${DECAFSUCKS_POSTGRES_PORT:-55432}:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql
+      # Mount the project at its own host path so our container-aware Postgres binstubs can read
+      # absolute paths provided by the hanami CLI (e.g. `psql --file .../config/db/structure.sql`
+      # used by `db structure load`).
+      - ${PWD}:${PWD}:ro
   mailpit:
     image: axllent/mailpit
     container_name: mailpit
