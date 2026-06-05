@@ -16,14 +16,12 @@ jobs:
         run: bundle exec rubocop
   tests:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:18-alpine
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
+    env:
+      # Replicate what mise provides locally for the Postgres binstubs
+      DECAFSUCKS_POSTGRES_CLI_USER: postgres
+      DECAFSUCKS_POSTGRES_CLI_PASSWORD: postgres
+      DECAFSUCKS_POSTGRES_PORT: 5432
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/decafsucks_test
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -37,12 +35,16 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Put binstubs on PATH
+        run: echo "$PWD/bin" >> "$GITHUB_PATH"
+      - name: Start Postgres
+        run: |
+          docker compose up -d postgres
+          until docker compose exec -T postgres pg_isready -U postgres; do sleep 1; done
       - name: Run tests
-        env:
-          DATABASE_URL: postgres://postgres:password@localhost:5432/decafsucks_test
         run: |
           HANAMI_ENV=test bundle exec hanami db create
-          PGPASSWORD=password psql -h localhost -U postgres -d decafsucks_test -c "CREATE EXTENSION IF NOT EXISTS citext;"
+          bin/psql -d decafsucks_test -c "CREATE EXTENSION IF NOT EXISTS citext;"
           HANAMI_ENV=test bundle exec hanami db migrate --no-dump
           bundle exec rake tailwind:compile
           bundle exec hanami assets compile

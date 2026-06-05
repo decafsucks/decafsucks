@@ -1,13 +1,13 @@
 #!/bin/sh
-set -euo pipefail
+set -eu
 
 # Delegates to createdb inside the postgres Docker container.
 #
 # Expects the "postgres" service from docker-compose.yml to be running.
 
-# Allocate a TTY for interactive use (e.g. a human running psql), but disable it with --no-tty
+# Allocate a TTY for interactive use (e.g. a human running psql), but disable it with -T
 # otherwise, so piped data (e.g. from the `hanami db` commands) isn't corrupted by terminal codes.
-TTY_FLAG="--no-tty"
+TTY_FLAG="-T"
 if [ -t 0 ] && [ -t 1 ]; then
   TTY_FLAG=""
 fi
