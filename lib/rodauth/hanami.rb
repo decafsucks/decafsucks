@@ -21,10 +21,10 @@ Rodauth::Feature.define(:hanami) do
   def view(template, title)
     return super unless view_template?(template)
 
-    view_rendering.template(
-      base_view.class.layout_path(base_view.config.layout),
-      view_rendering.scope(rodauth: self)
-    ) { render(template) }
+    layout_path = File.join(*[base_view.config.layouts_dir, base_view.config.layout].compact)
+    view_rendering.template(layout_path, view_rendering.scope(rodauth: self)) {
+      render(template)
+    }
   end
 
   # Renders templates without layout.
