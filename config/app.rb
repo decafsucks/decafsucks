@@ -4,6 +4,9 @@ require "hanami"
 
 module Decafsucks
   class App < Hanami::App
+    # Skip loading "classic" slice by default (required for import only).
+    config.slices = %w[main geocoding] unless ENV.key?("HANAMI_SLICES")
+
     config.actions.sessions = :cookie, {secret: settings.session_secret}
 
     # Allow blob URLs for Leaflet web workers
