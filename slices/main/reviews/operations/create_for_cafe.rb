@@ -6,18 +6,24 @@ module Main
       class CreateForCafe < Main::Operation
         include Deps[
           "reviews.contract",
-          "repos.review_repo"
+          "repos.review_repo",
+          "repos.like_repo"
         ]
 
-        def call(input, author_id:, cafe_id:)
+        def call(input, user_id:, cafe_id:)
           attrs = step validate(input)
 
-          review_repo.create(
-            author_id:,
+          review = review_repo.create(
+            user_id:,
             cafe_id:,
-            rating: attrs[:rating],
-            body: attrs[:body]
+            body: attrs[:body],
+            visited_on: attrs[:visited_on],
+            good_cup: attrs[:good_cup]
           )
+
+          like_repo.like(user_id:, cafe_id:) if attrs[:like]
+
+          review
         end
 
         private

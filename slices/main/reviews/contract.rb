@@ -8,8 +8,10 @@ module Main
       params do
         optional(:cafe_name).filled(:string)
         optional(:cafe_address).filled(:string)
-        required(:rating).filled(:integer, gteq?: 1, lteq?: 10)
         required(:body).filled(:string)
+        optional(:visited_on).maybe(:date)
+        optional(:good_cup).maybe(:bool)
+        optional(:like).maybe(:bool)
       end
     end
   end

@@ -8,6 +8,7 @@ module Classic
       relations.cafes
       relations.users
       relations.reviews
+      relations.likes
     ], from: :main
   end
 end

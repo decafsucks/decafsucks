@@ -7,7 +7,47 @@
     class="h-96 w-full rounded-lg shadow-lg mb-6">
   </div>
 
-  <p>
+  <div class="flex items-center gap-4 mb-6">
+    <% if signed_in? %>
+      <% if liked %>
+        <%= form_for(routes.path(:cafe_like, cafe_id: cafe.id), method: :delete) do |f| %>
+          <%= f.submit "♥ Liked" %>
+        <% end %>
+      <% else %>
+        <%= form_for(routes.path(:cafe_like, cafe_id: cafe.id)) do |f| %>
+          <%= f.submit "♡ Like" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <span><%= likes_count %> <%= (likes_count == 1) ? "like" : "likes" %></span>
+  </div>
+
+  <p class="mb-6">
     <a href="<%= routes.path(:new_cafe_review, cafe_id: cafe.id) %>">Write a review</a>
   </p>
+
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Reviews</h2>
+    <% if reviews.empty? %>
+      <p>No reviews yet.</p>
+    <% else %>
+      <ul class="space-y-4">
+        <% reviews.each do |review| %>
+          <li class="border-b pb-2">
+            <p><%= review.body %></p>
+            <% if review.visited_on || !review.good_cup.nil? %>
+              <div class="text-sm text-gray-500">
+                <% if review.visited_on %>
+                  Visited <%= review.visited_on %>
+                <% end %>
+                <% unless review.good_cup.nil? %>
+                  <span><%= review.good_cup ? "👍 good cup" : "👎 bad cup" %></span>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
 </div>

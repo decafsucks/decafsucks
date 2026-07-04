@@ -7,19 +7,25 @@ module Main
         include Deps[
           "reviews.contract",
           "repos.review_repo",
+          "repos.like_repo",
           resolve_cafe: "cafes.operations.resolve"
         ]
 
-        def call(input, author_id:)
+        def call(input, user_id:)
           attrs = step validate(input)
           cafe = step resolve_cafe.call(name: attrs[:cafe_name], address: attrs[:cafe_address])
 
-          review_repo.create(
-            author_id:,
+          review = review_repo.create(
+            user_id:,
             cafe_id: cafe.id,
-            rating: attrs[:rating],
-            body: attrs[:body]
+            body: attrs[:body],
+            visited_on: attrs[:visited_on],
+            good_cup: attrs[:good_cup]
           )
+
+          like_repo.like(user_id:, cafe_id: cafe.id) if attrs[:like]
+
+          review
         end
 
         private

@@ -15,13 +15,31 @@ end
 
 return unless Hanami.env == :development
 
-main["relations.cafes"].insert(
+cafe_id = main["relations.cafes"].insert(
   name: "Atlas",
   name_dmetaphone: "ATLS",
   address: "33 Hibberson St, Gungahlin ACT 2912, Australia",
   lat: -35.18531000,
   lng: 149.13362100,
-  rating: 9,
-  reviews_count: 1,
+  created_at: Time.now
+)
+
+user_id = main["relations.users"].insert(
+  name: "Sample Drinker",
+  created_at: Time.now
+)
+
+main["relations.reviews"].insert(
+  user_id: user_id,
+  cafe_id: cafe_id,
+  body: "Reliable oat flat white.",
+  visited_on: Time.now.to_date,
+  good_cup: true,
+  created_at: Time.now
+)
+
+main["relations.likes"].insert(
+  user_id: user_id,
+  cafe_id: cafe_id,
   created_at: Time.now
 )
