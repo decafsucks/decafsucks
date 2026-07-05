@@ -10,4 +10,4 @@ DECAFSUCKS_POSTGRES_CLI_PASSWORD = "postgres"
 
 [tools]
 node = "22.16.0"
-ruby = "3.4.4"
+ruby = "4.0.5"
