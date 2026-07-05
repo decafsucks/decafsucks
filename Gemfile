@@ -16,6 +16,7 @@ gem "hanami-view", github: "hanami/hanami-view", branch: "main"
 gem "pg"
 
 # Framework support
+gem "i18n"
 gem "puma"
 gem "rake"
 
@@ -56,6 +57,9 @@ end
 group :development, :test do
   # .env file support
   gem "dotenv"
+
+  # SQL syntax highlighting in logs
+  gem "rouge"
 end
 
 group :test do
