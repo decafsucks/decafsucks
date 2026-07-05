@@ -1,4 +1,4 @@
-<h1>Write a Review</h1>
+<h1>Write a review</h1>
 
 <% if (base = Array(errors[:base])).any? %>
   <ul>
@@ -26,14 +26,6 @@
   </div>
 
   <div>
-    <%= f.label "Rating (1-10)", for: "rating" %>
-    <%= f.number_field "rating", min: 1, max: 10 %>
-    <% Array(errors[:rating]).each do |msg| %>
-      <span><%= msg %></span>
-    <% end %>
-  </div>
-
-  <div>
     <%= f.label "Review", for: "body" %>
     <%= f.text_area "body", rows: 6 %>
     <% Array(errors[:body]).each do |msg| %>
@@ -41,5 +33,30 @@
     <% end %>
   </div>
 
-  <%= f.submit "Submit review" %>
+  <div>
+    <label><%= f.check_box "like" %> ♥ Like this cafe</label>
+  </div>
+
+  <fieldset>
+    <legend>How was the coffee?</legend>
+    <label><%= f.radio_button "good_cup", "true" %> Good cup</label>
+    <label><%= f.radio_button "good_cup", "false" %> Bad cup</label>
+    <% Array(errors[:good_cup]).each do |msg| %>
+      <span><%= msg %></span>
+    <% end %>
+  </fieldset>
+
+  <details>
+    <summary>Add a visit date</summary>
+
+    <div>
+      <%= f.label "Date of visit", for: "visited_on" %>
+      <%= f.date_field "visited_on" %>
+      <% Array(errors[:visited_on]).each do |msg| %>
+        <span><%= msg %></span>
+      <% end %>
+    </div>
+  </details>
+
+  <%= f.submit "Post review" %>
 <% end %>

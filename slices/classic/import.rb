@@ -19,13 +19,15 @@ module Classic
       gateway: "db.gateway",
       destination_cafes: "main.relations.cafes",
       destination_users: "main.relations.users",
-      destination_reviews: "main.relations.reviews"
+      destination_reviews: "main.relations.reviews",
+      destination_likes: "main.relations.likes"
     ]
 
     # New app records start here; all imported classic IDs are lower.
     NEW_ID_START = 10_000
 
-    # Destination tables whose identity sequences are pushed above the classic id range.
+    # Destination tables whose identity sequences are pushed above the classic id range. Likes are
+    # excluded: they carry no preserved classic id, so they use fresh sequence ids from the start.
     RESET_TABLES = %i[cafes users reviews].freeze
 
     def call
@@ -75,6 +77,12 @@ module Classic
       end
     end
 
+    # A classic review with a rating this high or above seeds a like for its (user, cafe).
+    LIKE_RATING_THRESHOLD = 7
+
+    # A classic review with a rating this low or below is imported as a bad-cup review.
+    BAD_CUP_RATING_THRESHOLD = 3
+
     def import_reviews(report)
       existing = id_set(destination_reviews)
       cafe_ids = id_set(destination_cafes)
@@ -88,14 +96,31 @@ module Classic
           next report.skip(:reviews, id, "cafe not imported")
         end
         unless user_ids.include?(review[:user_id])
-          next report.skip(:reviews, id, "author not imported")
+          next report.skip(:reviews, id, "reviewer not imported")
         end
-        if review[:body].nil? || review[:rating].nil?
-          next report.skip(:reviews, id, "missing body/rating")
+        if review[:body].nil?
+          next report.skip(:reviews, id, "missing body")
+        end
+        if review[:created_at].nil?
+          next report.skip(:reviews, id, "missing created_at")
         end
 
         record(report, :reviews, id) { destination_reviews.upsert(review_tuple(review)) }
+
+        seed_like(review) if review[:rating] && review[:rating] >= LIKE_RATING_THRESHOLD
       end
+    end
+
+    # Records a like for the review's (user, cafe).
+    #
+    # This is idempotent. The unique index means a second highly-rated review from the same user for
+    # the same cafe is swallowed as ON CONFLICT DO NOTHING.
+    def seed_like(review)
+      destination_likes.upsert(
+        user_id: review[:user_id],
+        cafe_id: review[:house_id],
+        created_at: review[:created_at]
+      )
     end
 
     # Runs an upsert and records the outcome: a returned primary key means an insert happened; nil
@@ -116,10 +141,7 @@ module Classic
         address: house[:address],
         lat: house[:lat],
         lng: house[:lng],
-        rating: house[:rating],
-        reviews_count: house[:reviews_count] || 0,
         created_at: house[:created_at],
-        last_reviewed_at: house[:last_reviewed_at],
         closed_at: house[:closed_at]
       }
     end
@@ -129,7 +151,6 @@ module Classic
         id: user[:id],
         account_id: nil,
         name: name,
-        reviews_count: user[:reviews_count] || 0,
         created_at: user[:created_at]
       }
     end
@@ -137,12 +158,23 @@ module Classic
     def review_tuple(review)
       {
         id: review[:id],
-        author_id: review[:user_id],
+        user_id: review[:user_id],
         cafe_id: review[:house_id],
         body: review[:body],
-        rating: review[:rating],
+        good_cup: good_cup_for(review[:rating]),
         created_at: review[:created_at]
       }
+    end
+
+    # Translates a 1-10 classic rating into a visit's good_cup state.
+    #
+    # A high rating means a good cup, a low rating bad cup. In between means we leave it nil.
+    def good_cup_for(rating)
+      return nil if rating.nil?
+      return true if rating >= LIKE_RATING_THRESHOLD
+      return false if rating <= BAD_CUP_RATING_THRESHOLD
+
+      nil
     end
 
     def id_set(relation)

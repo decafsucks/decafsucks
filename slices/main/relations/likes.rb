@@ -2,8 +2,8 @@
 
 module Main
   module Relations
-    class Reviews < Main::DB::Relation
-      schema :reviews, infer: true do
+    class Likes < Main::DB::Relation
+      schema :likes, infer: true do
         associations do
           belongs_to :user
           belongs_to :cafe

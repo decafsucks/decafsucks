@@ -9,6 +9,7 @@ module Decafsucks
 
       resources :cafes, only: %i[show] do
         resources :reviews, only: %i[new create]
+        resource :like, only: %i[create destroy]
       end
       resources :reviews, only: %i[new create]
       resource :account, only: %i[show]
