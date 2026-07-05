@@ -1,0 +1,13 @@
+<li class="border-b pb-4">
+  <div class="font-bold">
+    <%= link_to review.cafe.name, routes.path(:cafe, id: review.cafe.id) %>
+  </div>
+  <div class="text-sm text-gray-500"><%= review.cafe.address %></div>
+  <p class="mt-2"><%= review.body %></p>
+  <div class="text-sm text-gray-500">
+    — <%= review.user.name %>
+    <% unless review.good_cup.nil? %>
+      <span><%= review.good_cup ? "👍 good cup" : "👎 bad cup" %></span>
+    <% end %>
+  </div>
+</li>

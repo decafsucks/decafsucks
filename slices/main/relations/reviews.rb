@@ -3,6 +3,8 @@
 module Main
   module Relations
     class Reviews < Main::DB::Relation
+      use :pagination
+
       schema :reviews, infer: true do
         associations do
           belongs_to :user

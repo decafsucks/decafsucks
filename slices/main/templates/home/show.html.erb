@@ -1,7 +1,15 @@
-<h2>Cafes</h2>
+<h2 class="text-2xl font-bold mb-4">Recent reviews</h2>
 
-<% cafes.each do |cafe| %>
-  <div>
-    <%= link_to cafe.name, routes.path(:cafe, id: cafe.id) %>
-  </div>
+<% if reviews.empty? %>
+  <p>No reviews yet.</p>
+<% else %>
+  <ul class="space-y-6">
+    <% reviews.each do |review| %>
+      <%= render "reviews/review", review: review %>
+    <% end %>
+  </ul>
+
+  <p class="mt-6">
+    <%= link_to "See more reviews", routes.path(:reviews) %>
+  </p>
 <% end %>

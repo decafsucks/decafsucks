@@ -11,7 +11,7 @@ module Decafsucks
         resources :reviews, only: %i[new create]
         resource :like, only: %i[create destroy]
       end
-      resources :reviews, only: %i[new create]
+      resources :reviews, only: %i[index new create]
       resource :account, only: %i[show]
     end
   end
