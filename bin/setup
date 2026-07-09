@@ -12,6 +12,9 @@ def setup
   system! "gem install bundler --conservative"
   system! "bundle check || bundle install"
 
+  header "Installing node packages"
+  system! "npm install"
+
   header "💾 Preparing databases"
   system! "bundle exec hanami db prepare"
   system! "bundle exec hanami db seed -e test" # FIXME: this should be run by `db prepare`
