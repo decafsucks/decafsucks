@@ -3,13 +3,27 @@
 module Main
   module Repos
     class ReviewRepo < Main::DB::Repo
+      PER_PAGE = 20
+
       def create(attrs)
         id = reviews.changeset(:create, attrs).commit.fetch(:id)
         reviews.by_pk(id).one!
       end
 
-      # Newest first. Undated reviews fall back to when they were written, so a backfilled review
-      # sorts by its created_at while a review recording a visit sorts by the visit date.
+      # Returns a page of recent reviews.
+      #
+      # Returns newest reviews first, by `created_at`. Includes each review's cafe and reviewer.
+      def recent(page: 1)
+        reviews
+          .combine(:cafe, :user)
+          .order { created_at.desc }
+          .per_page(PER_PAGE)
+          .page(page)
+      end
+
+      # Returns the reviews for a cafe.
+      #
+      # Returns newest reviews first, by `visited_on` then `created_at`.
       def for_cafe(cafe_id)
         reviews
           .where(cafe_id:)

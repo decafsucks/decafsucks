@@ -4,10 +4,10 @@ module Main
   module Views
     module Home
       class Show < Main::View
-        include Deps["repos.cafe_repo"]
+        include Deps["repos.review_repo"]
 
-        expose :cafes do
-          cafe_repo.latest
+        expose :reviews do
+          review_repo.recent.to_a
         end
       end
     end

@@ -1,0 +1,20 @@
+<h2 class="text-2xl font-bold mb-4">Reviews</h2>
+
+<% if reviews.empty? %>
+  <p>No reviews yet.</p>
+<% else %>
+  <ul class="space-y-6">
+    <% reviews.each do |review| %>
+      <%= render "reviews/review", review: %>
+    <% end %>
+  </ul>
+
+  <div class="flex gap-4 mt-6">
+    <% if pager.prev_page %>
+      <%= link_to "← Newer", routes.path(:reviews, page: pager.prev_page) %>
+    <% end %>
+    <% if pager.next_page %>
+      <%= link_to "Older →", routes.path(:reviews, page: pager.next_page) %>
+    <% end %>
+  </div>
+<% end %>
